@@ -1,13 +1,8 @@
 # koma-console
-<style>
-table, th, td {
-  border: 0px solid black;
-}
-</style>
 KOMA Console - Authentication & Administration Console <br />
 <br />
 <table>
-<tr>
+<tr style="border:0px">
 <td>
 <img src="https://user-images.githubusercontent.com/15040338/88755779-17043600-d18c-11ea-9398-a93f2df2328c.jpg"></img>
 </td>
@@ -18,7 +13,7 @@ KOMA Console - Authentication & Administration Console <br />
 <img src="https://user-images.githubusercontent.com/15040338/88760212-cb0abe80-d196-11ea-8b72-cebdf4b79216.jpg"></img>
 </td>
 </tr>
-<tr>
+<tr style="border:0px">
 <td>
 <img src="https://user-images.githubusercontent.com/15040338/88760224-d1993600-d196-11ea-88ca-66602531aa04.jpg"></img>
 </td>
