@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writeMsbPubsubsubscriptionMapper">			
+	
+	<update id="writeMsbPubsubsubscription">
+		update msb_pubsubsubscription set serviceID = #{serviceid},
+		nodeID = #{nodeid},
+		id = #{id},
+		jid = #{jid},
+		owner = #{owner},
+		state = #{state},
+		deliver = #{deliver},
+		digest = #{digest},
+		digest_frequency = #{digestFrequency},
+		expire = #{expire},
+		includeBody = #{includebody},
+		showValues = #{showvalues},
+		subscriptionType = #{subscriptiontype},
+		subscriptionDepth = #{subscriptiondepth},
+		keyword = #{keyword} where serviceID = #{serviceid};
+	</update>
+
+</mapper>

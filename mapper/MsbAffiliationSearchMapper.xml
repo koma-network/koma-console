@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchMsbAffiliationMapper">			
+	
+	<select id="countMsbAffiliationSearch">
+		select count(*) from msb_affiliation
+		<trim prefix="where" prefixOverrides="and">
+			<if test="affiliation!=null">
+				and affiliation like #{affiliation}
+			</if>
+			<if test="description!=null">
+				and description like #{description}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchMsbAffiliation">
+		select affiliation,
+                description,
+                'x' from msb_affiliation  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="affiliation!=null">
+				affiliation like #{affiliation}
+			</if>
+			<if test="description!=null">
+				description like #{description}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

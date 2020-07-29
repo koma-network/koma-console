@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><h4><%=resource.Heading%></h4></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="msbMucroom-tab" data-toggle="tab" href="#msbMucroom" role="tab" aria-controls="msbMucroom" aria-selected="true"><h4><%=resource.MsbMucroom.Heading%></h4></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="msbMucserviceprop-tab" data-toggle="tab" href="#msbMucserviceprop" role="tab" aria-controls="msbMucserviceprop" aria-selected="true"><h4><%=resource.MsbMucserviceprop.Heading%></h4></a>
+      </li>
+    </ul>
+    
+    <div class="tab-content" id="myTabContent">
+
+        <div class="tab-pane fade in active" id="home" role="tabpanel" aria-labelledby="home-tab">	
+            <div style="width:40%">
+            <form class="form-horizontal">
+                <table class="table table-striped">
+                    <tr class="heading-tr">
+                        <th> <%=resource.Heading%></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td><%=resource.Serviceid.label%></td>
+                        <td><%=record.serviceID%></td>						
+                    </tr><tr>
+                        <td><%=resource.Domain.label%></td>
+                        <td><%=record.domain%></td>						
+                    </tr><tr>
+                        <td><%=resource.Subdomain.label%></td>
+                        <td><%=record.subdomain%></td>						
+                    </tr><tr>
+                        <td><%=resource.Description.label%></td>
+                        <td><%=record.description%></td>						
+                    </tr><tr>
+                        <td><%=resource.Ishidden.label%></td>
+                        <td><%=record.isHidden%></td>						
+                    </tr>
+                
+                </table>
+                <% if(session.user_acl=='ROLE_ADMIN') { %>
+                <button type="submit" class="btn btn-default"><a href="/writeMsbMucservice?serviceid=<%=record.serviceID%>">Edit</a></button>
+                <button type="submit" class="btn btn-default"><a href="/deleteMsbMucservice?serviceid=<%=record.serviceID%>">Delete</a></button>
+                <% } %>
+                <button type="button" class="btn btn-default" onclick="javascript:window.history.back()">Back</button>
+            </form>
+            </div>
+        </div>
+        
+	<div class="tab-pane fade" id="msbMucroom" role="tabpanel" aria-labelledby="msbMucroom-tab">
+            <div style="width:95%">
+            <table class="table table-striped">
+                <tr class="heading-tr">
+                    <th><%=resource.MsbMucroom.Roomid.header%></th>
+                    <!--th><%=resource.MsbMucroom.Serviceid.header%></th-->
+                    <th><%=resource.MsbMucroom.Creationdate.header%></th>
+                    <th><%=resource.MsbMucroom.Modificationdate.header%></th>
+                    <th><%=resource.MsbMucroom.Name.header%></th>
+                    <th style="width:250px"><%=resource.MsbMucroom.Naturalname.header%></th>
+                    <!--th><%=resource.MsbMucroom.Description.header%></th>
+                    <th><%=resource.MsbMucroom.Lockeddate.header%></th>
+                    <th><%=resource.MsbMucroom.Emptydate.header%></th>
+                    <th><%=resource.MsbMucroom.Canchangesubject.header%></th-->
+                    <th><%=resource.MsbMucroom.Maxusers.header%></th>
+                    <th><%=resource.MsbMucroom.Publicroom.header%></th>
+                    <!--th><%=resource.MsbMucroom.Moderated.header%></th>
+                    <th><%=resource.MsbMucroom.Membersonly.header%></th>
+                    <th><%=resource.MsbMucroom.Caninvite.header%></th>
+                    <th><%=resource.MsbMucroom.Roompassword.header%></th>
+                    <th><%=resource.MsbMucroom.Candiscoverjid.header%></th>
+                    <th><%=resource.MsbMucroom.Logenabled.header%></th->
+                    <th><%=resource.MsbMucroom.Subject.header%></th>
+                    <th><%=resource.MsbMucroom.Rolestobroadcast.header%></th>
+                    <th><%=resource.MsbMucroom.Usereservednick.header%></th>
+                    <th><%=resource.MsbMucroom.Canchangenick.header%></th>
+                    <th><%=resource.MsbMucroom.Canregister.header%></th-->
+                                        
+                    <th>View</th>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <% } %>
+                </tr>
+                <% for(let i in record.msbMucroom){ let rec = record.msbMucroom[i] %>
+                <tr>
+                    <td><a><%=rec.roomID%></a></td>
+                    <!--td><a><%=rec.serviceID%></a></td-->
+                    <td><a><%=rec.creationDate%></a></td>
+                    <td><a><%=rec.modificationDate%></a></td>
+                    <td><a><%=rec.name%></a></td>
+                    <td style="width:250px"><a><%=rec.naturalName%></a></td>
+                    <!--td><a><%=rec.description%></a></td>
+                    <td><a><%=rec.lockedDate%></a></td>
+                    <td><a><%=rec.emptyDate%></a></td>
+                    <td><a><%=rec.canChangeSubject%></a></td-->
+                    <td><a><%=rec.maxUsers%></a></td>
+                    <td><a><%=rec.publicRoom%></a></td>
+                    <!--td><a><%=rec.moderated%></a></td>
+                    <td><a><%=rec.membersOnly%></a></td>
+                    <td><a><%=rec.canInvite%></a></td>
+                    <td><a><%=rec.roomPassword%></a></td>
+                    <td><a><%=rec.canDiscoverJID%></a></td>
+                    <td><a><%=rec.logEnabled%></a></td>
+                    <td><a><%=rec.subject%></a></td>
+                    <td><a><%=rec.rolesToBroadcast%></a></td>
+                    <td><a><%=rec.useReservedNick%></a></td>
+                    <td><a><%=rec.canChangeNick%></a></td>
+                    <td><a><%=rec.canRegister%></a></td-->
+                    
+                    <td><a href="/readMsbMucroom?roomid=<%=rec.roomID%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <td><a href="/writeMsbMucroom?roomid=<%=rec.roomID%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                    <td><a href="/deleteMsbMucroom?roomid=<%=rec.roomID%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <% } %>
+                </tr>
+                <% } %>
+            </table>        
+	    <button type="submit" class="btn btn-default"><a href="/newMsbMucroom">Add</a></button>
+	    <button type="submit" class="btn btn-default">Clear</button>
+	    </div>	    
+        </div>            
+        
+	<div class="tab-pane fade" id="msbMucserviceprop" role="tabpanel" aria-labelledby="msbMucserviceprop-tab">
+            <div style="width:75%">
+            <table class="table table-striped">
+                <tr class="heading-tr">
+                    <th><%=resource.MsbMucserviceprop.Serviceid.header%></th>
+                    <th><%=resource.MsbMucserviceprop.Name.header%></th>
+                    <th><%=resource.MsbMucserviceprop.Propvalue.header%></th>
+                                        
+                    <th>View</th>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <% } %>
+                </tr>
+                <% for(let i in record.msbMucserviceprop){ let rec = record.msbMucserviceprop[i] %>
+                <tr>
+                    <td><a><%=rec.serviceID%></a></td>
+                    <td><a><%=rec.name%></a></td>
+                    <td><a><%=rec.propValue%></a></td>
+                    
+                    <td><a href="/readMsbMucserviceprop?serviceid=<%=rec.serviceID%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <td><a href="/writeMsbMucserviceprop?serviceid=<%=rec.serviceID%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                    <td><a href="/deleteMsbMucserviceprop?serviceid=<%=rec.serviceID%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <% } %>
+                </tr>
+                <% } %>
+            </table>        
+	    <button type="submit" class="btn btn-default"><a href="/newMsbMucserviceprop">Add</a></button>
+	    <button type="submit" class="btn btn-default">Clear</button>
+	    </div>	    
+        </div>            
+        
+    </div>
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

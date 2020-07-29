@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><h4><%=resource.Heading%></h4></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="msbRostergroups-tab" data-toggle="tab" href="#msbRostergroups" role="tab" aria-controls="msbRostergroups" aria-selected="true"><h4><%=resource.MsbRostergroups.Heading%></h4></a>
+      </li>
+    </ul>
+    
+    <div class="tab-content" id="myTabContent">
+
+        <div class="tab-pane fade in active" id="home" role="tabpanel" aria-labelledby="home-tab">	
+            <div style="width:40%">
+            <form class="form-horizontal">
+                <table class="table table-striped">
+                    <tr class="heading-tr">
+                        <th> <%=resource.Heading%></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td><%=resource.Rosterid.label%></td>
+                        <td><%=record.rosterID%></td>						
+                    </tr><tr>
+                        <td><%=resource.Subscriber.label%></td>
+                        <td><%=record.subscriber%></td>						
+                    </tr><tr>
+                        <td><%=resource.Jid.label%></td>
+                        <td><%=record.jid%></td>						
+                    </tr><tr>
+                        <td><%=resource.Sub.label%></td>
+                        <td><%=record.sub%></td>						
+                    </tr><tr>
+                        <td><%=resource.Ask.label%></td>
+                        <td><%=record.ask%></td>						
+                    </tr><tr>
+                        <td><%=resource.Recv.label%></td>
+                        <td><%=record.recv%></td>						
+                    </tr><tr>
+                        <td><%=resource.Nick.label%></td>
+                        <td><%=record.nick%></td>						
+                    </tr><tr>
+                        <td><%=resource.Key.label%></td>
+                        <td><%=record.key%></td>						
+                    </tr>
+                
+                </table>
+                <% if(session.user_acl=='ROLE_ADMIN') { %>
+                <button type="submit" class="btn btn-default"><a href="/writeMsbRoster?rosterid=<%=record.rosterID%>">Edit</a></button>
+                <button type="submit" class="btn btn-default"><a href="/deleteMsbRoster?rosterid=<%=record.rosterID%>">Delete</a></button>
+                <% } %>
+                <button type="button" class="btn btn-default" onclick="javascript:window.history.back()">Back</button>
+            </form>
+            </div>
+        </div>
+        
+	<div class="tab-pane fade" id="msbRostergroups" role="tabpanel" aria-labelledby="msbRostergroups-tab">
+            <div style="width:75%">
+            <table class="table table-striped">
+                <tr class="heading-tr">
+                    <th><%=resource.MsbRostergroups.Rosterid.header%></th>
+                    <th><%=resource.MsbRostergroups.Rank.header%></th>
+                    <th><%=resource.MsbRostergroups.Groupname.header%></th>
+                                        
+                    <th>View</th>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <% } %>
+                </tr>
+                <% for(let i in record.msbRostergroups){ let rec = record.msbRostergroups[i] %>
+                <tr>
+                    <td><a><%=rec.rosterID%></a></td>
+                    <td><a><%=rec.rank%></a></td>
+                    <td><a><%=rec.groupName%></a></td>
+                    
+                    <td><a href="/readMsbRostergroups?rosterid=<%=rec.rosterID%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <td><a href="/writeMsbRostergroups?rosterid=<%=rec.rosterID%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                    <td><a href="/deleteMsbRostergroups?rosterid=<%=rec.rosterID%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <% } %>
+                </tr>
+                <% } %>
+            </table>        
+	    <button type="submit" class="btn btn-default"><a href="/newMsbRostergroups">Add</a></button>
+	    <button type="submit" class="btn btn-default">Clear</button>
+	    </div>	    
+        </div>            
+        
+    </div>
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

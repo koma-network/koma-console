@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchMsbPubsubsubscriptionMapper">			
+	
+	<select id="countMsbPubsubsubscriptionSearch">
+		select count(*) from msb_pubsubsubscription
+		<trim prefix="where" prefixOverrides="and">
+			<if test="serviceid!=null">
+				and serviceID like #{serviceid}
+			</if>
+			<if test="nodeid!=null">
+				and nodeID like #{nodeid}
+			</if>
+			<if test="id!=null">
+				and id like #{id}
+			</if>
+			<if test="jid!=null">
+				and jid like #{jid}
+			</if>
+			<if test="owner!=null">
+				and owner like #{owner}
+			</if>
+			<if test="state!=null">
+				and state like #{state}
+			</if>
+			<if test="deliver!=null">
+				and deliver like #{deliver}
+			</if>
+			<if test="digest!=null">
+				and digest like #{digest}
+			</if>
+			<if test="digestFrequency!=null">
+				and digest_frequency like #{digestFrequency}
+			</if>
+			<if test="expire!=null">
+				and expire like #{expire}
+			</if>
+			<if test="includebody!=null">
+				and includeBody like #{includebody}
+			</if>
+			<if test="showvalues!=null">
+				and showValues like #{showvalues}
+			</if>
+			<if test="subscriptiontype!=null">
+				and subscriptionType like #{subscriptiontype}
+			</if>
+			<if test="subscriptiondepth!=null">
+				and subscriptionDepth like #{subscriptiondepth}
+			</if>
+			<if test="keyword!=null">
+				and keyword like #{keyword}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchMsbPubsubsubscription">
+		select serviceID,
+                nodeID,
+                id,
+                jid,
+                owner,
+                state,
+                deliver,
+                digest,
+                digest_frequency,
+                expire,
+                includeBody,
+                showValues,
+                subscriptionType,
+                subscriptionDepth,
+                keyword,
+                'x' from msb_pubsubsubscription  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="serviceid!=null">
+				serviceID like #{serviceid}
+			</if>
+			<if test="nodeid!=null">
+				nodeID like #{nodeid}
+			</if>
+			<if test="id!=null">
+				id like #{id}
+			</if>
+			<if test="jid!=null">
+				jid like #{jid}
+			</if>
+			<if test="owner!=null">
+				owner like #{owner}
+			</if>
+			<if test="state!=null">
+				state like #{state}
+			</if>
+			<if test="deliver!=null">
+				deliver like #{deliver}
+			</if>
+			<if test="digest!=null">
+				digest like #{digest}
+			</if>
+			<if test="digestFrequency!=null">
+				digest_frequency like #{digestFrequency}
+			</if>
+			<if test="expire!=null">
+				expire like #{expire}
+			</if>
+			<if test="includebody!=null">
+				includeBody like #{includebody}
+			</if>
+			<if test="showvalues!=null">
+				showValues like #{showvalues}
+			</if>
+			<if test="subscriptiontype!=null">
+				subscriptionType like #{subscriptiontype}
+			</if>
+			<if test="subscriptiondepth!=null">
+				subscriptionDepth like #{subscriptiondepth}
+			</if>
+			<if test="keyword!=null">
+				keyword like #{keyword}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

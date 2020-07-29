@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchMsbAccountMapper">			
+	
+	<select id="countMsbAccountSearch">
+		select count(*) from msb_account
+		<trim prefix="where" prefixOverrides="and">
+			<if test="username!=null">
+				and username like #{username}
+			</if>
+			<if test="password!=null">
+				and password like #{password}
+			</if>
+			<if test="account!=null">
+				and account like #{account}
+			</if>
+			<if test="email!=null">
+				and email like #{email}
+			</if>
+			<if test="phone!=null">
+				and phone like #{phone}
+			</if>
+			<if test="mobile!=null">
+				and mobile like #{mobile}
+			</if>
+			<if test="enabled!=null">
+				and enabled like #{enabled}
+			</if>
+			<if test="token!=null">
+				and token like #{token}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchMsbAccount">
+		select username,
+                password,
+                account,
+                email,
+                phone,
+                mobile,
+                enabled,
+                token,
+                'x' from msb_account  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="username!=null">
+				username like #{username}
+			</if>
+			<if test="password!=null">
+				password like #{password}
+			</if>
+			<if test="account!=null">
+				account like #{account}
+			</if>
+			<if test="email!=null">
+				email like #{email}
+			</if>
+			<if test="phone!=null">
+				phone like #{phone}
+			</if>
+			<if test="mobile!=null">
+				mobile like #{mobile}
+			</if>
+			<if test="enabled!=null">
+				enabled like #{enabled}
+			</if>
+			<if test="token!=null">
+				token like #{token}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

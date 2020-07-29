@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="newMsbPubsubsubscriptionMapper">			
+	
+	<insert id="newMsbPubsubsubscription">
+		insert into msb_pubsubsubscription(serviceID,nodeID,id,jid,owner,state,deliver,digest,digest_frequency,expire,includeBody,showValues,subscriptionType,subscriptionDepth,keyword) 
+		values (#{serviceid},#{nodeid},#{id},#{jid},#{owner},#{state},#{deliver},#{digest},#{digestFrequency},#{expire},#{includebody},#{showvalues},#{subscriptiontype},#{subscriptiondepth},#{keyword});
+	</insert>
+
+</mapper>

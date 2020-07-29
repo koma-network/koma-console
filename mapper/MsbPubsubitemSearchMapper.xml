@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchMsbPubsubitemMapper">			
+	
+	<select id="countMsbPubsubitemSearch">
+		select count(*) from msb_pubsubitem
+		<trim prefix="where" prefixOverrides="and">
+			<if test="serviceid!=null">
+				and serviceID like #{serviceid}
+			</if>
+			<if test="nodeid!=null">
+				and nodeID like #{nodeid}
+			</if>
+			<if test="id!=null">
+				and id like #{id}
+			</if>
+			<if test="jid!=null">
+				and jid like #{jid}
+			</if>
+			<if test="creationdate!=null">
+				and creationDate like #{creationdate}
+			</if>
+			<if test="payload!=null">
+				and payload like #{payload}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchMsbPubsubitem">
+		select serviceID,
+                nodeID,
+                id,
+                jid,
+                creationDate,
+                payload,
+                'x' from msb_pubsubitem  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="serviceid!=null">
+				serviceID like #{serviceid}
+			</if>
+			<if test="nodeid!=null">
+				nodeID like #{nodeid}
+			</if>
+			<if test="id!=null">
+				id like #{id}
+			</if>
+			<if test="jid!=null">
+				jid like #{jid}
+			</if>
+			<if test="creationdate!=null">
+				creationDate like #{creationdate}
+			</if>
+			<if test="payload!=null">
+				payload like #{payload}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

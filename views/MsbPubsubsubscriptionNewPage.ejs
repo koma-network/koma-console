@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+    <div style="width:40%">
+    <h3><%=resource.Title%></h3>
+    <form class="form-horizontal" action="/newMsbPubsubsubscription" method="post">
+        <table class="table table-striped">
+            <tr class="heading-tr">
+                <th><%=resource.Heading%></th>
+                <th style="text-align:right"><%=statusMessage%></th>
+            </tr>
+            <tr>
+                <td><%=resource.Serviceid.label%></td>
+                <td><input type="text" class="form-control" name="serviceid" value="<%=record.serviceid%>"/></td>
+            </tr><tr>
+                <td><%=resource.Nodeid.label%></td>
+                <td><input type="text" class="form-control" name="nodeid" value="<%=record.nodeid%>"/></td>
+            </tr><tr>
+                <td><%=resource.Id.label%></td>
+                <td><input type="text" class="form-control" name="id" value="<%=record.id%>"/></td>
+            </tr><tr>
+                <td><%=resource.Jid.label%></td>
+                <td><input type="text" class="form-control" name="jid" value="<%=record.jid%>"/></td>
+            </tr><tr>
+                <td><%=resource.Owner.label%></td>
+                <td><input type="text" class="form-control" name="owner" value="<%=record.owner%>"/></td>
+            </tr><tr>
+                <td><%=resource.State.label%></td>
+                <td><input type="text" class="form-control" name="state" value="<%=record.state%>"/></td>
+            </tr><tr>
+                <td><%=resource.Deliver.label%></td>
+                <td><input type="text" class="form-control" name="deliver" value="<%=record.deliver%>"/></td>
+            </tr><tr>
+                <td><%=resource.Digest.label%></td>
+                <td><input type="text" class="form-control" name="digest" value="<%=record.digest%>"/></td>
+            </tr><tr>
+                <td><%=resource.DigestFrequency.label%></td>
+                <td><input type="text" class="form-control" name="digestFrequency" value="<%=record.digestFrequency%>"/></td>
+            </tr><tr>
+                <td><%=resource.Expire.label%></td>
+                <td><input type="text" class="form-control" name="expire" value="<%=record.expire%>"/></td>
+            </tr><tr>
+                <td><%=resource.Includebody.label%></td>
+                <td><input type="text" class="form-control" name="includebody" value="<%=record.includebody%>"/></td>
+            </tr><tr>
+                <td><%=resource.Showvalues.label%></td>
+                <td><input type="text" class="form-control" name="showvalues" value="<%=record.showvalues%>"/></td>
+            </tr><tr>
+                <td><%=resource.Subscriptiontype.label%></td>
+                <td><input type="text" class="form-control" name="subscriptiontype" value="<%=record.subscriptiontype%>"/></td>
+            </tr><tr>
+                <td><%=resource.Subscriptiondepth.label%></td>
+                <td><input type="text" class="form-control" name="subscriptiondepth" value="<%=record.subscriptiondepth%>"/></td>
+            </tr><tr>
+                <td><%=resource.Keyword.label%></td>
+                <td><input type="text" class="form-control" name="keyword" value="<%=record.keyword%>"/></td>
+            </tr>
+        
+        </table>
+        <button type="submit" class="btn btn-default">Add</button>
+        <% if(statusCode == 200) { %>
+        <button type="button" class="btn btn-default"><a href="/<%=session.previouspath%>">Back</a></button>
+        <% }else{ %>
+        <button type="button" class="btn btn-default" onclick="javascript:window.history.back()">Cancel</button>
+        <% } %>
+    </form>
+    </div>
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

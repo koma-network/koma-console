@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchMsbRosterMapper">			
+	
+	<select id="countMsbRosterSearch">
+		select count(*) from msb_roster
+		<trim prefix="where" prefixOverrides="and">
+			<if test="rosterid!=null">
+				and rosterID like #{rosterid}
+			</if>
+			<if test="subscriber!=null">
+				and subscriber like #{subscriber}
+			</if>
+			<if test="jid!=null">
+				and jid like #{jid}
+			</if>
+			<if test="sub!=null">
+				and sub like #{sub}
+			</if>
+			<if test="ask!=null">
+				and ask like #{ask}
+			</if>
+			<if test="recv!=null">
+				and recv like #{recv}
+			</if>
+			<if test="nick!=null">
+				and nick like #{nick}
+			</if>
+			<if test="key!=null">
+				and key like #{key}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchMsbRoster">
+		select rosterID,
+                subscriber,
+                jid,
+                sub,
+                ask,
+                recv,
+                nick,
+                key,
+                'x' from msb_roster  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="rosterid!=null">
+				rosterID like #{rosterid}
+			</if>
+			<if test="subscriber!=null">
+				subscriber like #{subscriber}
+			</if>
+			<if test="jid!=null">
+				jid like #{jid}
+			</if>
+			<if test="sub!=null">
+				sub like #{sub}
+			</if>
+			<if test="ask!=null">
+				ask like #{ask}
+			</if>
+			<if test="recv!=null">
+				recv like #{recv}
+			</if>
+			<if test="nick!=null">
+				nick like #{nick}
+			</if>
+			<if test="key!=null">
+				key like #{key}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

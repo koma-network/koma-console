@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchMsbMucroomMapper">			
+	
+	<select id="countMsbMucroomSearch">
+		select count(*) from msb_mucroom
+		<trim prefix="where" prefixOverrides="and">
+			<if test="roomid!=null">
+				and roomID like #{roomid}
+			</if>
+			<if test="serviceid!=null">
+				and serviceID like #{serviceid}
+			</if>
+			<if test="creationdate!=null">
+				and creationDate like #{creationdate}
+			</if>
+			<if test="modificationdate!=null">
+				and modificationDate like #{modificationdate}
+			</if>
+			<if test="name!=null">
+				and name like #{name}
+			</if>
+			<if test="naturalname!=null">
+				and naturalName like #{naturalname}
+			</if>
+			<if test="description!=null">
+				and description like #{description}
+			</if>
+			<if test="lockeddate!=null">
+				and lockedDate like #{lockeddate}
+			</if>
+			<if test="emptydate!=null">
+				and emptyDate like #{emptydate}
+			</if>
+			<if test="canchangesubject!=null">
+				and canChangeSubject like #{canchangesubject}
+			</if>
+			<if test="maxusers!=null">
+				and maxUsers like #{maxusers}
+			</if>
+			<if test="publicroom!=null">
+				and publicRoom like #{publicroom}
+			</if>
+			<if test="moderated!=null">
+				and moderated like #{moderated}
+			</if>
+			<if test="membersonly!=null">
+				and membersOnly like #{membersonly}
+			</if>
+			<if test="caninvite!=null">
+				and canInvite like #{caninvite}
+			</if>
+			<if test="roompassword!=null">
+				and roomPassword like #{roompassword}
+			</if>
+			<if test="candiscoverjid!=null">
+				and canDiscoverJID like #{candiscoverjid}
+			</if>
+			<if test="logenabled!=null">
+				and logEnabled like #{logenabled}
+			</if>
+			<if test="subject!=null">
+				and subject like #{subject}
+			</if>
+			<if test="rolestobroadcast!=null">
+				and rolesToBroadcast like #{rolestobroadcast}
+			</if>
+			<if test="usereservednick!=null">
+				and useReservedNick like #{usereservednick}
+			</if>
+			<if test="canchangenick!=null">
+				and canChangeNick like #{canchangenick}
+			</if>
+			<if test="canregister!=null">
+				and canRegister like #{canregister}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchMsbMucroom">
+		select roomID,
+                serviceID,
+                creationDate,
+                modificationDate,
+                name,
+                naturalName,
+                description,
+                lockedDate,
+                emptyDate,
+                canChangeSubject,
+                maxUsers,
+                publicRoom,
+                moderated,
+                membersOnly,
+                canInvite,
+                roomPassword,
+                canDiscoverJID,
+                logEnabled,
+                subject,
+                rolesToBroadcast,
+                useReservedNick,
+                canChangeNick,
+                canRegister,
+                'x' from msb_mucroom  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="roomid!=null">
+				roomID like #{roomid}
+			</if>
+			<if test="serviceid!=null">
+				serviceID like #{serviceid}
+			</if>
+			<if test="creationdate!=null">
+				creationDate like #{creationdate}
+			</if>
+			<if test="modificationdate!=null">
+				modificationDate like #{modificationdate}
+			</if>
+			<if test="name!=null">
+				name like #{name}
+			</if>
+			<if test="naturalname!=null">
+				naturalName like #{naturalname}
+			</if>
+			<if test="description!=null">
+				description like #{description}
+			</if>
+			<if test="lockeddate!=null">
+				lockedDate like #{lockeddate}
+			</if>
+			<if test="emptydate!=null">
+				emptyDate like #{emptydate}
+			</if>
+			<if test="canchangesubject!=null">
+				canChangeSubject like #{canchangesubject}
+			</if>
+			<if test="maxusers!=null">
+				maxUsers like #{maxusers}
+			</if>
+			<if test="publicroom!=null">
+				publicRoom like #{publicroom}
+			</if>
+			<if test="moderated!=null">
+				moderated like #{moderated}
+			</if>
+			<if test="membersonly!=null">
+				membersOnly like #{membersonly}
+			</if>
+			<if test="caninvite!=null">
+				canInvite like #{caninvite}
+			</if>
+			<if test="roompassword!=null">
+				roomPassword like #{roompassword}
+			</if>
+			<if test="candiscoverjid!=null">
+				canDiscoverJID like #{candiscoverjid}
+			</if>
+			<if test="logenabled!=null">
+				logEnabled like #{logenabled}
+			</if>
+			<if test="subject!=null">
+				subject like #{subject}
+			</if>
+			<if test="rolestobroadcast!=null">
+				rolesToBroadcast like #{rolestobroadcast}
+			</if>
+			<if test="usereservednick!=null">
+				useReservedNick like #{usereservednick}
+			</if>
+			<if test="canchangenick!=null">
+				canChangeNick like #{canchangenick}
+			</if>
+			<if test="canregister!=null">
+				canRegister like #{canregister}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

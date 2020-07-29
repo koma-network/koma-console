@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="newMsbRemoteserverMapper">			
+	
+	<insert id="newMsbRemoteserver">
+		insert into msb_remoteserver(xmppDomain,remoteAddress,remotePort,user,password,permission) 
+		values (#{xmppdomain},#{remoteaddress},#{remoteport},#{user},#{password},#{permission});
+	</insert>
+
+</mapper>

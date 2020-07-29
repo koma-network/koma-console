@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchMsbRostergroupsMapper">			
+	
+	<select id="countMsbRostergroupsSearch">
+		select count(*) from msb_rostergroups
+		<trim prefix="where" prefixOverrides="and">
+			<if test="rosterid!=null">
+				and rosterID like #{rosterid}
+			</if>
+			<if test="rank!=null">
+				and rank like #{rank}
+			</if>
+			<if test="groupname!=null">
+				and groupName like #{groupname}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchMsbRostergroups">
+		select rosterID,
+                rank,
+                groupName,
+                'x' from msb_rostergroups  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="rosterid!=null">
+				rosterID like #{rosterid}
+			</if>
+			<if test="rank!=null">
+				rank like #{rank}
+			</if>
+			<if test="groupname!=null">
+				groupName like #{groupname}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

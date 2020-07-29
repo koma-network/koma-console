@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+    <div style="width:40%">
+    <h3><%=resource.Title%></h3>
+    <form class="form-horizontal" action="/newMsbTraffic" method="post">
+        <table class="table table-striped">
+            <tr class="heading-tr">
+                <th><%=resource.Heading%></th>
+                <th style="text-align:right"><%=statusMessage%></th>
+            </tr>
+            <tr>
+                <td><%=resource.Subscriber.label%></td>
+                <td><input type="text" class="form-control" name="subscriber" value="<%=record.subscriber%>"/></td>
+            </tr><tr>
+                <td><%=resource.Account.label%></td>
+                <td><input type="text" class="form-control" name="account" value="<%=record.account%>"/></td>
+            </tr><tr>
+                <td><%=resource.From.label%></td>
+                <td><input type="text" class="form-control" name="from" value="<%=record.from%>"/></td>
+            </tr><tr>
+                <td><%=resource.To.label%></td>
+                <td><input type="text" class="form-control" name="to" value="<%=record.to%>"/></td>
+            </tr><tr>
+                <td><%=resource.Counter.label%></td>
+                <td><input type="text" class="form-control" name="counter" value="<%=record.counter%>"/></td>
+            </tr><tr>
+                <td><%=resource.Type.label%></td>
+                <td><input type="text" class="form-control" name="type" value="<%=record.type%>"/></td>
+            </tr><tr>
+                <td><%=resource.LastUpdate.label%></td>
+                <td><input type="text" class="form-control" name="lastUpdate" value="<%=record.lastUpdate%>"/></td>
+            </tr><tr>
+                <td><%=resource.Status.label%></td>
+                <td><input type="text" class="form-control" name="status" value="<%=record.status%>"/></td>
+            </tr>
+        
+        </table>
+        <button type="submit" class="btn btn-default">Add</button>
+        <% if(statusCode == 200) { %>
+        <button type="button" class="btn btn-default"><a href="/<%=session.previouspath%>">Back</a></button>
+        <% }else{ %>
+        <button type="button" class="btn btn-default" onclick="javascript:window.history.back()">Cancel</button>
+        <% } %>
+    </form>
+    </div>
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

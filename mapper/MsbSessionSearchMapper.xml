@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchMsbSessionMapper">			
+	
+	<select id="countMsbSessionSearch">
+		select count(*) from msb_session
+		<trim prefix="where" prefixOverrides="and">
+			<if test="sessionid!=null">
+				and sessionId like #{sessionid}
+			</if>
+			<if test="subscriber!=null">
+				and subscriber like #{subscriber}
+			</if>
+			<if test="domain!=null">
+				and domain like #{domain}
+			</if>
+			<if test="ipaddress!=null">
+				and ipAddress like #{ipaddress}
+			</if>
+			<if test="ipport!=null">
+				and ipPort like #{ipport}
+			</if>
+			<if test="protocol!=null">
+				and protocol like #{protocol}
+			</if>
+			<if test="starttime!=null">
+				and startTime like #{starttime}
+			</if>
+			<if test="endtime!=null">
+				and endTime like #{endtime}
+			</if>
+			<if test="resource!=null">
+				and resource like #{resource}
+			</if>
+			<if test="presence!=null">
+				and presence like #{presence}
+			</if>
+			<if test="status!=null">
+				and status like #{status}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchMsbSession">
+		select sessionId,
+                subscriber,
+                domain,
+                ipAddress,
+                ipPort,
+                protocol,
+                startTime,
+                endTime,
+                resource,
+                presence,
+                status,
+                'x' from msb_session  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="sessionid!=null">
+				sessionId like #{sessionid}
+			</if>
+			<if test="subscriber!=null">
+				subscriber like #{subscriber}
+			</if>
+			<if test="domain!=null">
+				domain like #{domain}
+			</if>
+			<if test="ipaddress!=null">
+				ipAddress like #{ipaddress}
+			</if>
+			<if test="ipport!=null">
+				ipPort like #{ipport}
+			</if>
+			<if test="protocol!=null">
+				protocol like #{protocol}
+			</if>
+			<if test="starttime!=null">
+				startTime like #{starttime}
+			</if>
+			<if test="endtime!=null">
+				endTime like #{endtime}
+			</if>
+			<if test="resource!=null">
+				resource like #{resource}
+			</if>
+			<if test="presence!=null">
+				presence like #{presence}
+			</if>
+			<if test="status!=null">
+				status like #{status}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

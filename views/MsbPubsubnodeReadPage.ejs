@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><h4><%=resource.Heading%></h4></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="msbPubsubitem-tab" data-toggle="tab" href="#msbPubsubitem" role="tab" aria-controls="msbPubsubitem" aria-selected="true"><h4><%=resource.MsbPubsubitem.Heading%></h4></a>
+      </li>
+    </ul>
+    
+    <div class="tab-content" id="myTabContent">
+
+        <div class="tab-pane fade in active" id="home" role="tabpanel" aria-labelledby="home-tab">	
+            <div style="width:40%">
+            <form class="form-horizontal">
+                <table class="table table-striped">
+                    <tr class="heading-tr">
+                        <th> <%=resource.Heading%></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td><%=resource.Serviceid.label%></td>
+                        <td><%=record.serviceID%></td>						
+                    </tr><tr>
+                        <td><%=resource.Nodeid.label%></td>
+                        <td><%=record.nodeID%></td>						
+                    </tr><tr>
+                        <td><%=resource.Leaf.label%></td>
+                        <td><%=record.leaf%></td>						
+                    </tr><tr>
+                        <td><%=resource.Creationdate.label%></td>
+                        <td><%=record.creationDate%></td>						
+                    </tr><tr>
+                        <td><%=resource.Modificationdate.label%></td>
+                        <td><%=record.modificationDate%></td>						
+                    </tr><tr>
+                        <td><%=resource.Parent.label%></td>
+                        <td><%=record.parent%></td>						
+                    </tr><tr>
+                        <td><%=resource.Deliverpayloads.label%></td>
+                        <td><%=record.deliverPayloads%></td>						
+                    </tr><tr>
+                        <td><%=resource.Maxpayloadsize.label%></td>
+                        <td><%=record.maxPayloadSize%></td>						
+                    </tr><tr>
+                        <td><%=resource.Persistitems.label%></td>
+                        <td><%=record.persistItems%></td>						
+                    </tr><tr>
+                        <td><%=resource.Maxitems.label%></td>
+                        <td><%=record.maxItems%></td>						
+                    </tr><tr>
+                        <td><%=resource.Notifyconfigchanges.label%></td>
+                        <td><%=record.notifyConfigChanges%></td>						
+                    </tr><tr>
+                        <td><%=resource.Notifydelete.label%></td>
+                        <td><%=record.notifyDelete%></td>						
+                    </tr><tr>
+                        <td><%=resource.Notifyretract.label%></td>
+                        <td><%=record.notifyRetract%></td>						
+                    </tr><tr>
+                        <td><%=resource.Presencebased.label%></td>
+                        <td><%=record.presenceBased%></td>						
+                    </tr><tr>
+                        <td><%=resource.Senditemsubscribe.label%></td>
+                        <td><%=record.sendItemSubscribe%></td>						
+                    </tr><tr>
+                        <td><%=resource.Publishermodel.label%></td>
+                        <td><%=record.publisherModel%></td>						
+                    </tr><tr>
+                        <td><%=resource.Subscriptionenabled.label%></td>
+                        <td><%=record.subscriptionEnabled%></td>						
+                    </tr><tr>
+                        <td><%=resource.Configsubscription.label%></td>
+                        <td><%=record.configSubscription%></td>						
+                    </tr><tr>
+                        <td><%=resource.Accessmodel.label%></td>
+                        <td><%=record.accessModel%></td>						
+                    </tr><tr>
+                        <td><%=resource.Payloadtype.label%></td>
+                        <td><%=record.payloadType%></td>						
+                    </tr><tr>
+                        <td><%=resource.Bodyxslt.label%></td>
+                        <td><%=record.bodyXSLT%></td>						
+                    </tr><tr>
+                        <td><%=resource.Dataformxslt.label%></td>
+                        <td><%=record.dataformXSLT%></td>						
+                    </tr><tr>
+                        <td><%=resource.Creator.label%></td>
+                        <td><%=record.creator%></td>						
+                    </tr><tr>
+                        <td><%=resource.Description.label%></td>
+                        <td><%=record.description%></td>						
+                    </tr><tr>
+                        <td><%=resource.Language.label%></td>
+                        <td><%=record.language%></td>						
+                    </tr><tr>
+                        <td><%=resource.Name.label%></td>
+                        <td><%=record.name%></td>						
+                    </tr><tr>
+                        <td><%=resource.Replypolicy.label%></td>
+                        <td><%=record.replyPolicy%></td>						
+                    </tr><tr>
+                        <td><%=resource.Associationpolicy.label%></td>
+                        <td><%=record.associationPolicy%></td>						
+                    </tr><tr>
+                        <td><%=resource.Maxleafnodes.label%></td>
+                        <td><%=record.maxLeafNodes%></td>						
+                    </tr>
+                
+                </table>
+                <% if(session.user_acl=='ROLE_ADMIN') { %>
+                <button type="submit" class="btn btn-default"><a href="/writeMsbPubsubnode?serviceid=<%=record.serviceID%>">Edit</a></button>
+                <button type="submit" class="btn btn-default"><a href="/deleteMsbPubsubnode?serviceid=<%=record.serviceID%>">Delete</a></button>
+                <% } %>
+                <button type="button" class="btn btn-default" onclick="javascript:window.history.back()">Back</button>
+            </form>
+            </div>
+        </div>
+        
+	<div class="tab-pane fade" id="msbPubsubitem" role="tabpanel" aria-labelledby="msbPubsubitem-tab">
+            <div style="width:75%">
+            <table class="table table-striped">
+                <tr class="heading-tr">
+                    <th><%=resource.MsbPubsubitem.Serviceid.header%></th>
+                    <th><%=resource.MsbPubsubitem.Nodeid.header%></th>
+                    <th><%=resource.MsbPubsubitem.Id.header%></th>
+                    <th><%=resource.MsbPubsubitem.Jid.header%></th>
+                    <th><%=resource.MsbPubsubitem.Creationdate.header%></th>
+                    <th><%=resource.MsbPubsubitem.Payload.header%></th>
+                                        
+                    <th>View</th>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <% } %>
+                </tr>
+                <% for(let i in record.msbPubsubitem){ let rec = record.msbPubsubitem[i] %>
+                <tr>
+                    <td><a><%=rec.serviceID%></a></td>
+                    <td><a><%=rec.nodeID%></a></td>
+                    <td><a><%=rec.id%></a></td>
+                    <td><a><%=rec.jid%></a></td>
+                    <td><a><%=rec.creationDate%></a></td>
+                    <td><a><%=rec.payload%></a></td>
+                    
+                    <td><a href="/readMsbPubsubitem?serviceid=<%=rec.serviceID%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <td><a href="/writeMsbPubsubitem?serviceid=<%=rec.serviceID%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                    <td><a href="/deleteMsbPubsubitem?serviceid=<%=rec.serviceID%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <% } %>
+                </tr>
+                <% } %>
+            </table>        
+	    <button type="submit" class="btn btn-default"><a href="/newMsbPubsubitem">Add</a></button>
+	    <button type="submit" class="btn btn-default">Clear</button>
+	    </div>	    
+        </div>            
+        
+    </div>
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

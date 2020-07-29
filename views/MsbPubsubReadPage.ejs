@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><h4><%=resource.Heading%></h4></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="msbPubsubnode-tab" data-toggle="tab" href="#msbPubsubnode" role="tab" aria-controls="msbPubsubnode" aria-selected="true"><h4><%=resource.MsbPubsubnode.Heading%></h4></a>
+      </li>
+    </ul>
+    
+    <div class="tab-content" id="myTabContent">
+
+        <div class="tab-pane fade in active" id="home" role="tabpanel" aria-labelledby="home-tab">	
+            <div style="width:40%">
+            <form class="form-horizontal">
+                <table class="table table-striped">
+                    <tr class="heading-tr">
+                        <th> <%=resource.Heading%></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td><%=resource.Serviceid.label%></td>
+                        <td><%=record.serviceID%></td>						
+                    </tr><tr>
+                        <td><%=resource.Protocol.label%></td>
+                        <td><%=record.protocol%></td>						
+                    </tr><tr>
+                        <td><%=resource.Description.label%></td>
+                        <td><%=record.description%></td>						
+                    </tr>
+                
+                </table>
+                <% if(session.user_acl=='ROLE_ADMIN') { %>
+                <button type="submit" class="btn btn-default"><a href="/writeMsbPubsub?serviceid=<%=record.serviceID%>">Edit</a></button>
+                <button type="submit" class="btn btn-default"><a href="/deleteMsbPubsub?serviceid=<%=record.serviceID%>">Delete</a></button>
+                <% } %>
+                <button type="button" class="btn btn-default" onclick="javascript:window.history.back()">Back</button>
+            </form>
+            </div>
+        </div>
+        
+	<div class="tab-pane fade" id="msbPubsubnode" role="tabpanel" aria-labelledby="msbPubsubnode-tab">
+            <div style="width:75%">
+            <table class="table table-striped">
+                <tr class="heading-tr">
+                    <th><%=resource.MsbPubsubnode.Serviceid.header%></th>
+                    <th><%=resource.MsbPubsubnode.Nodeid.header%></th>
+                    <th><%=resource.MsbPubsubnode.Leaf.header%></th>
+                    <th><%=resource.MsbPubsubnode.Creationdate.header%></th>
+                    <th><%=resource.MsbPubsubnode.Modificationdate.header%></th>
+                    <th><%=resource.MsbPubsubnode.Parent.header%></th>
+                    <th><%=resource.MsbPubsubnode.Deliverpayloads.header%></th>
+                    <th><%=resource.MsbPubsubnode.Maxpayloadsize.header%></th>
+                    <th><%=resource.MsbPubsubnode.Persistitems.header%></th>
+                    <th><%=resource.MsbPubsubnode.Maxitems.header%></th>
+                    <th><%=resource.MsbPubsubnode.Notifyconfigchanges.header%></th>
+                    <th><%=resource.MsbPubsubnode.Notifydelete.header%></th>
+                    <th><%=resource.MsbPubsubnode.Notifyretract.header%></th>
+                    <th><%=resource.MsbPubsubnode.Presencebased.header%></th>
+                    <th><%=resource.MsbPubsubnode.Senditemsubscribe.header%></th>
+                    <th><%=resource.MsbPubsubnode.Publishermodel.header%></th>
+                    <th><%=resource.MsbPubsubnode.Subscriptionenabled.header%></th>
+                    <th><%=resource.MsbPubsubnode.Configsubscription.header%></th>
+                    <th><%=resource.MsbPubsubnode.Accessmodel.header%></th>
+                    <th><%=resource.MsbPubsubnode.Payloadtype.header%></th>
+                    <th><%=resource.MsbPubsubnode.Bodyxslt.header%></th>
+                    <th><%=resource.MsbPubsubnode.Dataformxslt.header%></th>
+                    <th><%=resource.MsbPubsubnode.Creator.header%></th>
+                    <th><%=resource.MsbPubsubnode.Description.header%></th>
+                    <th><%=resource.MsbPubsubnode.Language.header%></th>
+                    <th><%=resource.MsbPubsubnode.Name.header%></th>
+                    <th><%=resource.MsbPubsubnode.Replypolicy.header%></th>
+                    <th><%=resource.MsbPubsubnode.Associationpolicy.header%></th>
+                    <th><%=resource.MsbPubsubnode.Maxleafnodes.header%></th>
+                                        
+                    <th>View</th>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <% } %>
+                </tr>
+                <% for(let i in record.msbPubsubnode){ let rec = record.msbPubsubnode[i] %>
+                <tr>
+                    <td><a><%=rec.serviceID%></a></td>
+                    <td><a><%=rec.nodeID%></a></td>
+                    <td><a><%=rec.leaf%></a></td>
+                    <td><a><%=rec.creationDate%></a></td>
+                    <td><a><%=rec.modificationDate%></a></td>
+                    <td><a><%=rec.parent%></a></td>
+                    <td><a><%=rec.deliverPayloads%></a></td>
+                    <td><a><%=rec.maxPayloadSize%></a></td>
+                    <td><a><%=rec.persistItems%></a></td>
+                    <td><a><%=rec.maxItems%></a></td>
+                    <td><a><%=rec.notifyConfigChanges%></a></td>
+                    <td><a><%=rec.notifyDelete%></a></td>
+                    <td><a><%=rec.notifyRetract%></a></td>
+                    <td><a><%=rec.presenceBased%></a></td>
+                    <td><a><%=rec.sendItemSubscribe%></a></td>
+                    <td><a><%=rec.publisherModel%></a></td>
+                    <td><a><%=rec.subscriptionEnabled%></a></td>
+                    <td><a><%=rec.configSubscription%></a></td>
+                    <td><a><%=rec.accessModel%></a></td>
+                    <td><a><%=rec.payloadType%></a></td>
+                    <td><a><%=rec.bodyXSLT%></a></td>
+                    <td><a><%=rec.dataformXSLT%></a></td>
+                    <td><a><%=rec.creator%></a></td>
+                    <td><a><%=rec.description%></a></td>
+                    <td><a><%=rec.language%></a></td>
+                    <td><a><%=rec.name%></a></td>
+                    <td><a><%=rec.replyPolicy%></a></td>
+                    <td><a><%=rec.associationPolicy%></a></td>
+                    <td><a><%=rec.maxLeafNodes%></a></td>
+                    
+                    <td><a href="/readMsbPubsubnode?serviceid=<%=rec.serviceID%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <td><a href="/writeMsbPubsubnode?serviceid=<%=rec.serviceID%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                    <td><a href="/deleteMsbPubsubnode?serviceid=<%=rec.serviceID%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <% } %>
+                </tr>
+                <% } %>
+            </table>        
+	    <button type="submit" class="btn btn-default"><a href="/newMsbPubsubnode">Add</a></button>
+	    <button type="submit" class="btn btn-default">Clear</button>
+	    </div>	    
+        </div>            
+        
+    </div>
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

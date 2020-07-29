@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+    <div style="width:40%">
+    <h3><%=resource.Title%></h3>
+    <form class="form-horizontal" action="/writeMsbPubsubnode" method="post">
+        <table class="table table-striped">
+            <tr class="heading-tr">
+                <th><%=resource.Heading%></th>
+                <th style="text-align:right"><%=statusMessage%></th>
+            </tr>
+            <tr>
+                <td><%=resource.Serviceid.label%></td>
+                <td><input type="text" class="form-control" name="serviceid" value="<%=record.serviceID%>"/></td>
+            </tr><tr>
+                <td><%=resource.Nodeid.label%></td>
+                <td><input type="text" class="form-control" name="nodeid" value="<%=record.nodeID%>"/></td>
+            </tr><tr>
+                <td><%=resource.Leaf.label%></td>
+                <td><input type="text" class="form-control" name="leaf" value="<%=record.leaf%>"/></td>
+            </tr><tr>
+                <td><%=resource.Creationdate.label%></td>
+                <td><input type="text" class="form-control" name="creationdate" value="<%=record.creationDate%>"/></td>
+            </tr><tr>
+                <td><%=resource.Modificationdate.label%></td>
+                <td><input type="text" class="form-control" name="modificationdate" value="<%=record.modificationDate%>"/></td>
+            </tr><tr>
+                <td><%=resource.Parent.label%></td>
+                <td><input type="text" class="form-control" name="parent" value="<%=record.parent%>"/></td>
+            </tr><tr>
+                <td><%=resource.Deliverpayloads.label%></td>
+                <td><input type="text" class="form-control" name="deliverpayloads" value="<%=record.deliverPayloads%>"/></td>
+            </tr><tr>
+                <td><%=resource.Maxpayloadsize.label%></td>
+                <td><input type="text" class="form-control" name="maxpayloadsize" value="<%=record.maxPayloadSize%>"/></td>
+            </tr><tr>
+                <td><%=resource.Persistitems.label%></td>
+                <td><input type="text" class="form-control" name="persistitems" value="<%=record.persistItems%>"/></td>
+            </tr><tr>
+                <td><%=resource.Maxitems.label%></td>
+                <td><input type="text" class="form-control" name="maxitems" value="<%=record.maxItems%>"/></td>
+            </tr><tr>
+                <td><%=resource.Notifyconfigchanges.label%></td>
+                <td><input type="text" class="form-control" name="notifyconfigchanges" value="<%=record.notifyConfigChanges%>"/></td>
+            </tr><tr>
+                <td><%=resource.Notifydelete.label%></td>
+                <td><input type="text" class="form-control" name="notifydelete" value="<%=record.notifyDelete%>"/></td>
+            </tr><tr>
+                <td><%=resource.Notifyretract.label%></td>
+                <td><input type="text" class="form-control" name="notifyretract" value="<%=record.notifyRetract%>"/></td>
+            </tr><tr>
+                <td><%=resource.Presencebased.label%></td>
+                <td><input type="text" class="form-control" name="presencebased" value="<%=record.presenceBased%>"/></td>
+            </tr><tr>
+                <td><%=resource.Senditemsubscribe.label%></td>
+                <td><input type="text" class="form-control" name="senditemsubscribe" value="<%=record.sendItemSubscribe%>"/></td>
+            </tr><tr>
+                <td><%=resource.Publishermodel.label%></td>
+                <td><input type="text" class="form-control" name="publishermodel" value="<%=record.publisherModel%>"/></td>
+            </tr><tr>
+                <td><%=resource.Subscriptionenabled.label%></td>
+                <td><input type="text" class="form-control" name="subscriptionenabled" value="<%=record.subscriptionEnabled%>"/></td>
+            </tr><tr>
+                <td><%=resource.Configsubscription.label%></td>
+                <td><input type="text" class="form-control" name="configsubscription" value="<%=record.configSubscription%>"/></td>
+            </tr><tr>
+                <td><%=resource.Accessmodel.label%></td>
+                <td><input type="text" class="form-control" name="accessmodel" value="<%=record.accessModel%>"/></td>
+            </tr><tr>
+                <td><%=resource.Payloadtype.label%></td>
+                <td><input type="text" class="form-control" name="payloadtype" value="<%=record.payloadType%>"/></td>
+            </tr><tr>
+                <td><%=resource.Bodyxslt.label%></td>
+                <td><input type="text" class="form-control" name="bodyxslt" value="<%=record.bodyXSLT%>"/></td>
+            </tr><tr>
+                <td><%=resource.Dataformxslt.label%></td>
+                <td><input type="text" class="form-control" name="dataformxslt" value="<%=record.dataformXSLT%>"/></td>
+            </tr><tr>
+                <td><%=resource.Creator.label%></td>
+                <td><input type="text" class="form-control" name="creator" value="<%=record.creator%>"/></td>
+            </tr><tr>
+                <td><%=resource.Description.label%></td>
+                <td><input type="text" class="form-control" name="description" value="<%=record.description%>"/></td>
+            </tr><tr>
+                <td><%=resource.Language.label%></td>
+                <td><input type="text" class="form-control" name="language" value="<%=record.language%>"/></td>
+            </tr><tr>
+                <td><%=resource.Name.label%></td>
+                <td><input type="text" class="form-control" name="name" value="<%=record.name%>"/></td>
+            </tr><tr>
+                <td><%=resource.Replypolicy.label%></td>
+                <td><input type="text" class="form-control" name="replypolicy" value="<%=record.replyPolicy%>"/></td>
+            </tr><tr>
+                <td><%=resource.Associationpolicy.label%></td>
+                <td><input type="text" class="form-control" name="associationpolicy" value="<%=record.associationPolicy%>"/></td>
+            </tr><tr>
+                <td><%=resource.Maxleafnodes.label%></td>
+                <td><input type="text" class="form-control" name="maxleafnodes" value="<%=record.maxLeafNodes%>"/></td>
+            </tr>
+        
+        </table>
+        <button type="submit" class="btn btn-default">Update</button>
+        <% if(statusCode == 200) { %>
+        <button type="button" class="btn btn-default""><a href="/<%=session.previouspath%>">Back</a></button>
+        <% }else{ %>
+        <button type="button" class="btn btn-default" onclick="javascript:window.history.back()">Cancel</button>
+        <% } %>
+    </form>
+    </div>
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

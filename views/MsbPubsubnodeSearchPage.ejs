@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+<form class="form-horizontal" action="/searchMsbPubsubnode" method="get">    
+    <div style="width:50%">
+    <h3><%=resource.Title%></h3>
+        <input type="hidden" class="form-control" name="rowid" value="0"/>    
+        <table class="table table-striped">
+            <tr class="heading-tr">
+                <th><%=resource.Heading%></th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <td><%=resource.Serviceid.label%></td>    
+                <td><input type="text" class="form-control" name="serviceID"/></td>
+                <td>
+                    <button type="submit" name="action" value="first" class="btn btn-default">Find</button>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <button type="submit" class="btn btn-default"><a href="/newMsbPubsubnode">Add</a></button>
+                    <% } %>
+                </td>
+            </tr>
+        </table>    
+    </div>
+    
+    <div style="width:75%">
+        <table class="table table-striped">
+            <tr class="heading-tr">
+                <th><%=resource.MsbPubsubnode.Serviceid.header%></th>
+                <th><%=resource.MsbPubsubnode.Nodeid.header%></th>
+                <th><%=resource.MsbPubsubnode.Leaf.header%></th>
+                <th><%=resource.MsbPubsubnode.Creationdate.header%></th>
+                <th><%=resource.MsbPubsubnode.Modificationdate.header%></th>
+                <th><%=resource.MsbPubsubnode.Parent.header%></th>
+                <th><%=resource.MsbPubsubnode.Deliverpayloads.header%></th>
+                <th><%=resource.MsbPubsubnode.Maxpayloadsize.header%></th>
+                <th><%=resource.MsbPubsubnode.Persistitems.header%></th>
+                <th><%=resource.MsbPubsubnode.Maxitems.header%></th>
+                <th><%=resource.MsbPubsubnode.Notifyconfigchanges.header%></th>
+                <th><%=resource.MsbPubsubnode.Notifydelete.header%></th>
+                <th><%=resource.MsbPubsubnode.Notifyretract.header%></th>
+                <th><%=resource.MsbPubsubnode.Presencebased.header%></th>
+                <th><%=resource.MsbPubsubnode.Senditemsubscribe.header%></th>
+                <th><%=resource.MsbPubsubnode.Publishermodel.header%></th>
+                <th><%=resource.MsbPubsubnode.Subscriptionenabled.header%></th>
+                <th><%=resource.MsbPubsubnode.Configsubscription.header%></th>
+                <th><%=resource.MsbPubsubnode.Accessmodel.header%></th>
+                <th><%=resource.MsbPubsubnode.Payloadtype.header%></th>
+                <th><%=resource.MsbPubsubnode.Bodyxslt.header%></th>
+                <th><%=resource.MsbPubsubnode.Dataformxslt.header%></th>
+                <th><%=resource.MsbPubsubnode.Creator.header%></th>
+                <th><%=resource.MsbPubsubnode.Description.header%></th>
+                <th><%=resource.MsbPubsubnode.Language.header%></th>
+                <th><%=resource.MsbPubsubnode.Name.header%></th>
+                <th><%=resource.MsbPubsubnode.Replypolicy.header%></th>
+                <th><%=resource.MsbPubsubnode.Associationpolicy.header%></th>
+                <th><%=resource.MsbPubsubnode.Maxleafnodes.header%></th>
+                
+            	<th>View</th>
+                <% if(session.user_acl=='ROLE_ADMIN') { %>
+                <th>Edit</th>
+                <th>Delete</th>
+                <% } %>
+            </tr>
+            <% for(var i in records){let row = records[i]; %>			            
+            <tr>
+                <td><a><%=row.serviceID%></a></td>
+                <td><a><%=row.nodeID%></a></td>
+                <td><a><%=row.leaf%></a></td>
+                <td><a><%=row.creationDate%></a></td>
+                <td><a><%=row.modificationDate%></a></td>
+                <td><a><%=row.parent%></a></td>
+                <td><a><%=row.deliverPayloads%></a></td>
+                <td><a><%=row.maxPayloadSize%></a></td>
+                <td><a><%=row.persistItems%></a></td>
+                <td><a><%=row.maxItems%></a></td>
+                <td><a><%=row.notifyConfigChanges%></a></td>
+                <td><a><%=row.notifyDelete%></a></td>
+                <td><a><%=row.notifyRetract%></a></td>
+                <td><a><%=row.presenceBased%></a></td>
+                <td><a><%=row.sendItemSubscribe%></a></td>
+                <td><a><%=row.publisherModel%></a></td>
+                <td><a><%=row.subscriptionEnabled%></a></td>
+                <td><a><%=row.configSubscription%></a></td>
+                <td><a><%=row.accessModel%></a></td>
+                <td><a><%=row.payloadType%></a></td>
+                <td><a><%=row.bodyXSLT%></a></td>
+                <td><a><%=row.dataformXSLT%></a></td>
+                <td><a><%=row.creator%></a></td>
+                <td><a><%=row.description%></a></td>
+                <td><a><%=row.language%></a></td>
+                <td><a><%=row.name%></a></td>
+                <td><a><%=row.replyPolicy%></a></td>
+                <td><a><%=row.associationPolicy%></a></td>
+                <td><a><%=row.maxLeafNodes%></a></td>
+                
+                <td><a href="/readMsbPubsubnode?serviceid=<%=row.serviceID%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                <% if(session.user_acl=='ROLE_ADMIN') { %>
+                <td><a href="/writeMsbPubsubnode?serviceid=<%=row.serviceID%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                <td><a href="/deleteMsbPubsubnode?serviceid=<%=row.serviceID%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                <% } %>
+            </tr>
+            <% } %>            
+        </table>
+        
+        <div class="table-pagination">
+           <ul class="pagination">
+                 <li><button type="submit" name="action" value="first" class="btn btn-default">First</button></li>
+                 <li><button type="submit" name="action" value="previous" class="btn btn-default">Previous</button></li>
+                 <li><button type="submit" name="action" value="next" class="btn btn-default">Next</button></li>
+                 <li><button type="submit" name="action" value="last" class="btn btn-default">Last</button></li>
+           </ul>	        
+        </div>
+    </div>
+</form>                
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

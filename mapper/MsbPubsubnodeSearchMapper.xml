@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchMsbPubsubnodeMapper">			
+	
+	<select id="countMsbPubsubnodeSearch">
+		select count(*) from msb_pubsubnode
+		<trim prefix="where" prefixOverrides="and">
+			<if test="serviceid!=null">
+				and serviceID like #{serviceid}
+			</if>
+			<if test="nodeid!=null">
+				and nodeID like #{nodeid}
+			</if>
+			<if test="leaf!=null">
+				and leaf like #{leaf}
+			</if>
+			<if test="creationdate!=null">
+				and creationDate like #{creationdate}
+			</if>
+			<if test="modificationdate!=null">
+				and modificationDate like #{modificationdate}
+			</if>
+			<if test="parent!=null">
+				and parent like #{parent}
+			</if>
+			<if test="deliverpayloads!=null">
+				and deliverPayloads like #{deliverpayloads}
+			</if>
+			<if test="maxpayloadsize!=null">
+				and maxPayloadSize like #{maxpayloadsize}
+			</if>
+			<if test="persistitems!=null">
+				and persistItems like #{persistitems}
+			</if>
+			<if test="maxitems!=null">
+				and maxItems like #{maxitems}
+			</if>
+			<if test="notifyconfigchanges!=null">
+				and notifyConfigChanges like #{notifyconfigchanges}
+			</if>
+			<if test="notifydelete!=null">
+				and notifyDelete like #{notifydelete}
+			</if>
+			<if test="notifyretract!=null">
+				and notifyRetract like #{notifyretract}
+			</if>
+			<if test="presencebased!=null">
+				and presenceBased like #{presencebased}
+			</if>
+			<if test="senditemsubscribe!=null">
+				and sendItemSubscribe like #{senditemsubscribe}
+			</if>
+			<if test="publishermodel!=null">
+				and publisherModel like #{publishermodel}
+			</if>
+			<if test="subscriptionenabled!=null">
+				and subscriptionEnabled like #{subscriptionenabled}
+			</if>
+			<if test="configsubscription!=null">
+				and configSubscription like #{configsubscription}
+			</if>
+			<if test="accessmodel!=null">
+				and accessModel like #{accessmodel}
+			</if>
+			<if test="payloadtype!=null">
+				and payloadType like #{payloadtype}
+			</if>
+			<if test="bodyxslt!=null">
+				and bodyXSLT like #{bodyxslt}
+			</if>
+			<if test="dataformxslt!=null">
+				and dataformXSLT like #{dataformxslt}
+			</if>
+			<if test="creator!=null">
+				and creator like #{creator}
+			</if>
+			<if test="description!=null">
+				and description like #{description}
+			</if>
+			<if test="language!=null">
+				and language like #{language}
+			</if>
+			<if test="name!=null">
+				and name like #{name}
+			</if>
+			<if test="replypolicy!=null">
+				and replyPolicy like #{replypolicy}
+			</if>
+			<if test="associationpolicy!=null">
+				and associationPolicy like #{associationpolicy}
+			</if>
+			<if test="maxleafnodes!=null">
+				and maxLeafNodes like #{maxleafnodes}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchMsbPubsubnode">
+		select serviceID,
+                nodeID,
+                leaf,
+                creationDate,
+                modificationDate,
+                parent,
+                deliverPayloads,
+                maxPayloadSize,
+                persistItems,
+                maxItems,
+                notifyConfigChanges,
+                notifyDelete,
+                notifyRetract,
+                presenceBased,
+                sendItemSubscribe,
+                publisherModel,
+                subscriptionEnabled,
+                configSubscription,
+                accessModel,
+                payloadType,
+                bodyXSLT,
+                dataformXSLT,
+                creator,
+                description,
+                language,
+                name,
+                replyPolicy,
+                associationPolicy,
+                maxLeafNodes,
+                'x' from msb_pubsubnode  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="serviceid!=null">
+				serviceID like #{serviceid}
+			</if>
+			<if test="nodeid!=null">
+				nodeID like #{nodeid}
+			</if>
+			<if test="leaf!=null">
+				leaf like #{leaf}
+			</if>
+			<if test="creationdate!=null">
+				creationDate like #{creationdate}
+			</if>
+			<if test="modificationdate!=null">
+				modificationDate like #{modificationdate}
+			</if>
+			<if test="parent!=null">
+				parent like #{parent}
+			</if>
+			<if test="deliverpayloads!=null">
+				deliverPayloads like #{deliverpayloads}
+			</if>
+			<if test="maxpayloadsize!=null">
+				maxPayloadSize like #{maxpayloadsize}
+			</if>
+			<if test="persistitems!=null">
+				persistItems like #{persistitems}
+			</if>
+			<if test="maxitems!=null">
+				maxItems like #{maxitems}
+			</if>
+			<if test="notifyconfigchanges!=null">
+				notifyConfigChanges like #{notifyconfigchanges}
+			</if>
+			<if test="notifydelete!=null">
+				notifyDelete like #{notifydelete}
+			</if>
+			<if test="notifyretract!=null">
+				notifyRetract like #{notifyretract}
+			</if>
+			<if test="presencebased!=null">
+				presenceBased like #{presencebased}
+			</if>
+			<if test="senditemsubscribe!=null">
+				sendItemSubscribe like #{senditemsubscribe}
+			</if>
+			<if test="publishermodel!=null">
+				publisherModel like #{publishermodel}
+			</if>
+			<if test="subscriptionenabled!=null">
+				subscriptionEnabled like #{subscriptionenabled}
+			</if>
+			<if test="configsubscription!=null">
+				configSubscription like #{configsubscription}
+			</if>
+			<if test="accessmodel!=null">
+				accessModel like #{accessmodel}
+			</if>
+			<if test="payloadtype!=null">
+				payloadType like #{payloadtype}
+			</if>
+			<if test="bodyxslt!=null">
+				bodyXSLT like #{bodyxslt}
+			</if>
+			<if test="dataformxslt!=null">
+				dataformXSLT like #{dataformxslt}
+			</if>
+			<if test="creator!=null">
+				creator like #{creator}
+			</if>
+			<if test="description!=null">
+				description like #{description}
+			</if>
+			<if test="language!=null">
+				language like #{language}
+			</if>
+			<if test="name!=null">
+				name like #{name}
+			</if>
+			<if test="replypolicy!=null">
+				replyPolicy like #{replypolicy}
+			</if>
+			<if test="associationpolicy!=null">
+				associationPolicy like #{associationpolicy}
+			</if>
+			<if test="maxleafnodes!=null">
+				maxLeafNodes like #{maxleafnodes}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

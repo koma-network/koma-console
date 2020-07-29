@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="newMsbPubsubnodeMapper">			
+	
+	<insert id="newMsbPubsubnode">
+		insert into msb_pubsubnode(serviceID,nodeID,leaf,creationDate,modificationDate,parent,deliverPayloads,maxPayloadSize,persistItems,maxItems,notifyConfigChanges,notifyDelete,notifyRetract,presenceBased,sendItemSubscribe,publisherModel,subscriptionEnabled,configSubscription,accessModel,payloadType,bodyXSLT,dataformXSLT,creator,description,language,name,replyPolicy,associationPolicy,maxLeafNodes) 
+		values (#{serviceid},#{nodeid},#{leaf},#{creationdate},#{modificationdate},#{parent},#{deliverpayloads},#{maxpayloadsize},#{persistitems},#{maxitems},#{notifyconfigchanges},#{notifydelete},#{notifyretract},#{presencebased},#{senditemsubscribe},#{publishermodel},#{subscriptionenabled},#{configsubscription},#{accessmodel},#{payloadtype},#{bodyxslt},#{dataformxslt},#{creator},#{description},#{language},#{name},#{replypolicy},#{associationpolicy},#{maxleafnodes});
+	</insert>
+
+</mapper>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchMsbPubsubnodegroupsMapper">			
+	
+	<select id="countMsbPubsubnodegroupsSearch">
+		select count(*) from msb_pubsubnodegroups
+		<trim prefix="where" prefixOverrides="and">
+			<if test="serviceid!=null">
+				and serviceID like #{serviceid}
+			</if>
+			<if test="nodeid!=null">
+				and nodeID like #{nodeid}
+			</if>
+			<if test="rostergroup!=null">
+				and rosterGroup like #{rostergroup}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchMsbPubsubnodegroups">
+		select serviceID,
+                nodeID,
+                rosterGroup,
+                'x' from msb_pubsubnodegroups  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="serviceid!=null">
+				serviceID like #{serviceid}
+			</if>
+			<if test="nodeid!=null">
+				nodeID like #{nodeid}
+			</if>
+			<if test="rostergroup!=null">
+				rosterGroup like #{rostergroup}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

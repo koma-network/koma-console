@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="readMsbSubscriberMapper">			
+	
+	<select id="readMsbSubscriber">
+		select * from msb_subscriber where subscriber = #{subscriber};
+	</select>
+ 
+	<select id="readMsbSubscriberMsbMucmember">
+        select * from msb_mucmember where subscriber = #{subscriber};
+	</select>
+   
+	<select id="readMsbSubscriberMsbOffline">
+        select * from msb_offline where subscriber = #{subscriber};
+	</select>
+   
+	<select id="readMsbSubscriberMsbPresence">
+        select * from msb_presence where subscriber = #{subscriber};
+	</select>
+   
+	<select id="readMsbSubscriberMsbRevenue">
+        select * from msb_revenue where subscriber = #{subscriber};
+	</select>
+   
+	<select id="readMsbSubscriberMsbRoster">
+        select * from msb_roster where subscriber = #{subscriber};
+	</select>
+   
+	<select id="readMsbSubscriberMsbSession">
+        select * from msb_session where subscriber = #{subscriber};
+	</select>
+   
+	<select id="readMsbSubscriberMsbSubscriberprop">
+        select * from msb_subscriberprop where subscriber = #{subscriber};
+	</select>
+   
+	<select id="readMsbSubscriberMsbTraffic">
+        select * from msb_traffic where subscriber = #{subscriber};
+	</select>
+   
+	<select id="readMsbSubscriberMsbVcard">
+        select * from msb_vcard where subscriber = #{subscriber};
+	</select>
+  
+</mapper>

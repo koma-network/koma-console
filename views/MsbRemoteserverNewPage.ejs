@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+    <div style="width:40%">
+    <h3><%=resource.Title%></h3>
+    <form class="form-horizontal" action="/newMsbRemoteserver" method="post">
+        <table class="table table-striped">
+            <tr class="heading-tr">
+                <th><%=resource.Heading%></th>
+                <th style="text-align:right"><%=statusMessage%></th>
+            </tr>
+            <tr>
+                <td><%=resource.Xmppdomain.label%></td>
+                <td><input type="text" class="form-control" name="xmppdomain" value="<%=record.xmppdomain%>"/></td>
+            </tr><tr>
+                <td><%=resource.Remoteaddress.label%></td>
+                <td><input type="text" class="form-control" name="remoteaddress" value="<%=record.remoteaddress%>"/></td>
+            </tr><tr>
+                <td><%=resource.Remoteport.label%></td>
+                <td><input type="text" class="form-control" name="remoteport" value="<%=record.remoteport%>"/></td>
+            </tr><tr>
+                <td><%=resource.User.label%></td>
+                <td><input type="text" class="form-control" name="user" value="<%=record.user%>"/></td>
+            </tr><tr>
+                <td><%=resource.Password.label%></td>
+                <td><input type="text" class="form-control" name="password" value="<%=record.password%>"/></td>
+            </tr><tr>
+                <td><%=resource.Permission.label%></td>
+                <td><input type="text" class="form-control" name="permission" value="<%=record.permission%>"/></td>
+            </tr>
+        
+        </table>
+        <button type="submit" class="btn btn-default">Add</button>
+        <% if(statusCode == 200) { %>
+        <button type="button" class="btn btn-default"><a href="/<%=session.previouspath%>">Back</a></button>
+        <% }else{ %>
+        <button type="button" class="btn btn-default" onclick="javascript:window.history.back()">Cancel</button>
+        <% } %>
+    </form>
+    </div>
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

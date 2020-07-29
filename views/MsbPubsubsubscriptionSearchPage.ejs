@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+<form class="form-horizontal" action="/searchMsbPubsubsubscription" method="get">    
+    <div style="width:50%">
+    <h3><%=resource.Title%></h3>
+        <input type="hidden" class="form-control" name="rowid" value="0"/>    
+        <table class="table table-striped">
+            <tr class="heading-tr">
+                <th><%=resource.Heading%></th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <td><%=resource.Serviceid.label%></td>    
+                <td><input type="text" class="form-control" name="serviceID"/></td>
+                <td>
+                    <button type="submit" name="action" value="first" class="btn btn-default">Find</button>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <button type="submit" class="btn btn-default"><a href="/newMsbPubsubsubscription">Add</a></button>
+                    <% } %>
+                </td>
+            </tr>
+        </table>    
+    </div>
+    
+    <div style="width:75%">
+        <table class="table table-striped">
+            <tr class="heading-tr">
+                <th><%=resource.MsbPubsubsubscription.Serviceid.header%></th>
+                <th><%=resource.MsbPubsubsubscription.Nodeid.header%></th>
+                <th><%=resource.MsbPubsubsubscription.Id.header%></th>
+                <th><%=resource.MsbPubsubsubscription.Jid.header%></th>
+                <th><%=resource.MsbPubsubsubscription.Owner.header%></th>
+                <th><%=resource.MsbPubsubsubscription.State.header%></th>
+                <th><%=resource.MsbPubsubsubscription.Deliver.header%></th>
+                <th><%=resource.MsbPubsubsubscription.Digest.header%></th>
+                <th><%=resource.MsbPubsubsubscription.DigestFrequency.header%></th>
+                <th><%=resource.MsbPubsubsubscription.Expire.header%></th>
+                <th><%=resource.MsbPubsubsubscription.Includebody.header%></th>
+                <th><%=resource.MsbPubsubsubscription.Showvalues.header%></th>
+                <th><%=resource.MsbPubsubsubscription.Subscriptiontype.header%></th>
+                <th><%=resource.MsbPubsubsubscription.Subscriptiondepth.header%></th>
+                <th><%=resource.MsbPubsubsubscription.Keyword.header%></th>
+                
+            	<th>View</th>
+                <% if(session.user_acl=='ROLE_ADMIN') { %>
+                <th>Edit</th>
+                <th>Delete</th>
+                <% } %>
+            </tr>
+            <% for(var i in records){let row = records[i]; %>			            
+            <tr>
+                <td><a><%=row.serviceID%></a></td>
+                <td><a><%=row.nodeID%></a></td>
+                <td><a><%=row.id%></a></td>
+                <td><a><%=row.jid%></a></td>
+                <td><a><%=row.owner%></a></td>
+                <td><a><%=row.state%></a></td>
+                <td><a><%=row.deliver%></a></td>
+                <td><a><%=row.digest%></a></td>
+                <td><a><%=row.digest_frequency%></a></td>
+                <td><a><%=row.expire%></a></td>
+                <td><a><%=row.includeBody%></a></td>
+                <td><a><%=row.showValues%></a></td>
+                <td><a><%=row.subscriptionType%></a></td>
+                <td><a><%=row.subscriptionDepth%></a></td>
+                <td><a><%=row.keyword%></a></td>
+                
+                <td><a href="/readMsbPubsubsubscription?serviceid=<%=row.serviceID%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                <% if(session.user_acl=='ROLE_ADMIN') { %>
+                <td><a href="/writeMsbPubsubsubscription?serviceid=<%=row.serviceID%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                <td><a href="/deleteMsbPubsubsubscription?serviceid=<%=row.serviceID%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                <% } %>
+            </tr>
+            <% } %>            
+        </table>
+        
+        <div class="table-pagination">
+           <ul class="pagination">
+                 <li><button type="submit" name="action" value="first" class="btn btn-default">First</button></li>
+                 <li><button type="submit" name="action" value="previous" class="btn btn-default">Previous</button></li>
+                 <li><button type="submit" name="action" value="next" class="btn btn-default">Next</button></li>
+                 <li><button type="submit" name="action" value="last" class="btn btn-default">Last</button></li>
+           </ul>	        
+        </div>
+    </div>
+</form>                
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

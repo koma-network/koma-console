@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+    <div style="width:40%">
+    <h3><%=resource.Title%></h3>
+    <form class="form-horizontal" action="/writeMsbSession" method="post">
+        <table class="table table-striped">
+            <tr class="heading-tr">
+                <th><%=resource.Heading%></th>
+                <th style="text-align:right"><%=statusMessage%></th>
+            </tr>
+            <tr>
+                <td><%=resource.Sessionid.label%></td>
+                <td><input type="text" class="form-control" name="sessionid" value="<%=record.sessionId%>"/></td>
+            </tr><tr>
+                <td><%=resource.Subscriber.label%></td>
+                <td><input type="text" class="form-control" name="subscriber" value="<%=record.subscriber%>"/></td>
+            </tr><tr>
+                <td><%=resource.Domain.label%></td>
+                <td><input type="text" class="form-control" name="domain" value="<%=record.domain%>"/></td>
+            </tr><tr>
+                <td><%=resource.Ipaddress.label%></td>
+                <td><input type="text" class="form-control" name="ipaddress" value="<%=record.ipAddress%>"/></td>
+            </tr><tr>
+                <td><%=resource.Ipport.label%></td>
+                <td><input type="text" class="form-control" name="ipport" value="<%=record.ipPort%>"/></td>
+            </tr><tr>
+                <td><%=resource.Protocol.label%></td>
+                <td><input type="text" class="form-control" name="protocol" value="<%=record.protocol%>"/></td>
+            </tr><tr>
+                <td><%=resource.Starttime.label%></td>
+                <td><input type="text" class="form-control" name="starttime" value="<%=record.startTime%>"/></td>
+            </tr><tr>
+                <td><%=resource.Endtime.label%></td>
+                <td><input type="text" class="form-control" name="endtime" value="<%=record.endTime%>"/></td>
+            </tr><tr>
+                <td><%=resource.Resource.label%></td>
+                <td><input type="text" class="form-control" name="resource" value="<%=record.resource%>"/></td>
+            </tr><tr>
+                <td><%=resource.Presence.label%></td>
+                <td><input type="text" class="form-control" name="presence" value="<%=record.presence%>"/></td>
+            </tr><tr>
+                <td><%=resource.Status.label%></td>
+                <td><input type="text" class="form-control" name="status" value="<%=record.status%>"/></td>
+            </tr>
+        
+        </table>
+        <button type="submit" class="btn btn-default">Update</button>
+        <% if(statusCode == 200) { %>
+        <button type="button" class="btn btn-default""><a href="/<%=session.previouspath%>">Back</a></button>
+        <% }else{ %>
+        <button type="button" class="btn btn-default" onclick="javascript:window.history.back()">Cancel</button>
+        <% } %>
+    </form>
+    </div>
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

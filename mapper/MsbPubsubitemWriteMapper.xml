@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writeMsbPubsubitemMapper">			
+	
+	<update id="writeMsbPubsubitem">
+		update msb_pubsubitem set serviceID = #{serviceid},
+		nodeID = #{nodeid},
+		id = #{id},
+		jid = #{jid},
+		creationDate = #{creationdate},
+		payload = #{payload} where serviceID = #{serviceid};
+	</update>
+
+</mapper>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchMsbPresenceMapper">			
+	
+	<select id="countMsbPresenceSearch">
+		select count(*) from msb_presence
+		<trim prefix="where" prefixOverrides="and">
+			<if test="subscriber!=null">
+				and subscriber like #{subscriber}
+			</if>
+			<if test="offlinepresence!=null">
+				and offlinePresence like #{offlinepresence}
+			</if>
+			<if test="offlinedate!=null">
+				and offlineDate like #{offlinedate}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchMsbPresence">
+		select subscriber,
+                offlinePresence,
+                offlineDate,
+                'x' from msb_presence  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="subscriber!=null">
+				subscriber like #{subscriber}
+			</if>
+			<if test="offlinepresence!=null">
+				offlinePresence like #{offlinepresence}
+			</if>
+			<if test="offlinedate!=null">
+				offlineDate like #{offlinedate}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

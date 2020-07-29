@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><h4><%=resource.Heading%></h4></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="msbAuthorities-tab" data-toggle="tab" href="#msbAuthorities" role="tab" aria-controls="msbAuthorities" aria-selected="true"><h4><%=resource.MsbAuthorities.Heading%></h4></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="msbPersistentLogins-tab" data-toggle="tab" href="#msbPersistentLogins" role="tab" aria-controls="msbPersistentLogins" aria-selected="true"><h4><%=resource.MsbPersistentLogins.Heading%></h4></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="msbSubscriber-tab" data-toggle="tab" href="#msbSubscriber" role="tab" aria-controls="msbSubscriber" aria-selected="true"><h4><%=resource.MsbSubscriber.Heading%></h4></a>
+      </li>
+    </ul>
+    
+    <div class="tab-content" id="myTabContent">
+
+        <div class="tab-pane fade in active" id="home" role="tabpanel" aria-labelledby="home-tab">	
+            <div style="width:40%">
+            <form class="form-horizontal">
+                <table class="table table-striped">
+                    <tr class="heading-tr">
+                        <th> <%=resource.Heading%></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td><%=resource.Username.label%></td>
+                        <td><%=record.username%></td>						
+                    </tr><tr>
+                        <td><%=resource.Password.label%></td>
+                        <td><%=record.password%></td>						
+                    </tr><tr>
+                        <td><%=resource.Account.label%></td>
+                        <td><%=record.account%></td>						
+                    </tr><tr>
+                        <td><%=resource.Email.label%></td>
+                        <td><%=record.email%></td>						
+                    </tr><tr>
+                        <td><%=resource.Phone.label%></td>
+                        <td><%=record.phone%></td>						
+                    </tr><tr>
+                        <td><%=resource.Mobile.label%></td>
+                        <td><%=record.mobile%></td>						
+                    </tr><tr>
+                        <td><%=resource.Enabled.label%></td>
+                        <td><%=record.enabled%></td>						
+                    </tr><tr>
+                        <td><%=resource.Token.label%></td>
+                        <td><%=record.token%></td>						
+                    </tr>
+                
+                </table>
+                <% if(session.user_acl=='ROLE_ADMIN') { %>
+                <button type="submit" class="btn btn-default"><a href="/writeMsbAccount?username=<%=record.username%>">Edit</a></button>
+                <button type="submit" class="btn btn-default"><a href="/deleteMsbAccount?username=<%=record.username%>">Delete</a></button>
+                <% } %>
+                <button type="button" class="btn btn-default" onclick="javascript:window.history.back()">Back</button>
+            </form>
+            </div>
+        </div>
+        
+	<div class="tab-pane fade" id="msbAuthorities" role="tabpanel" aria-labelledby="msbAuthorities-tab">
+            <div style="width:75%">
+            <table class="table table-striped">
+                <tr class="heading-tr">
+                    <th><%=resource.MsbAuthorities.Username.header%></th>
+                    <th><%=resource.MsbAuthorities.Authority.header%></th>
+                                        
+                    <th>View</th>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <% } %>
+                </tr>
+                <% for(let i in record.msbAuthorities){ let rec = record.msbAuthorities[i] %>
+                <tr>
+                    <td><a><%=rec.username%></a></td>
+                    <td><a><%=rec.authority%></a></td>
+                    
+                    <td><a href="/readMsbAuthorities?username=<%=rec.username%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <td><a href="/writeMsbAuthorities?username=<%=rec.username%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                    <td><a href="/deleteMsbAuthorities?username=<%=rec.username%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <% } %>
+                </tr>
+                <% } %>
+            </table>        
+	    <button type="submit" class="btn btn-default"><a href="/newMsbAuthorities">Add</a></button>
+	    <button type="submit" class="btn btn-default">Clear</button>
+	    </div>	    
+        </div>            
+        
+	<div class="tab-pane fade" id="msbPersistentLogins" role="tabpanel" aria-labelledby="msbPersistentLogins-tab">
+            <div style="width:75%">
+            <table class="table table-striped">
+                <tr class="heading-tr">
+                    <th><%=resource.MsbPersistentLogins.Username.header%></th>
+                    <th><%=resource.MsbPersistentLogins.Series.header%></th>
+                    <th><%=resource.MsbPersistentLogins.Token.header%></th>
+                    <th><%=resource.MsbPersistentLogins.LastUsed.header%></th>
+                                        
+                    <th>View</th>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <% } %>
+                </tr>
+                <% for(let i in record.msbPersistentLogins){ let rec = record.msbPersistentLogins[i] %>
+                <tr>
+                    <td><a><%=rec.username%></a></td>
+                    <td><a><%=rec.series%></a></td>
+                    <td><a><%=rec.token%></a></td>
+                    <td><a><%=dateFormat(rec.last_used,'mmm-dd-yyyy h:MM:ss TT')%></a></td>
+                    
+                    <td><a href="/readMsbPersistentLogins?username=<%=rec.username%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <td><a href="/writeMsbPersistentLogins?username=<%=rec.username%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                    <td><a href="/deleteMsbPersistentLogins?username=<%=rec.username%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <% } %>
+                </tr>
+                <% } %>
+            </table>        
+	    <button type="submit" class="btn btn-default"><a href="/newMsbPersistentLogins">Add</a></button>
+	    <button type="submit" class="btn btn-default">Clear</button>
+	    </div>	    
+        </div>            
+        
+	<div class="tab-pane fade" id="msbSubscriber" role="tabpanel" aria-labelledby="msbSubscriber-tab">
+            <div style="width:75%">
+            <table class="table table-striped">
+                <tr class="heading-tr">
+                    <th><%=resource.MsbSubscriber.Subscriber.header%></th>
+                    <!--th><%=resource.MsbSubscriber.Password.header%></th-->
+                    <th><%=resource.MsbSubscriber.Name.header%></th>
+                    <th><%=resource.MsbSubscriber.Email.header%></th>
+                    <th><%=resource.MsbSubscriber.Creationdate.header%></th>
+                    <th><%=resource.MsbSubscriber.Modificationdate.header%></th>
+                    <th><%=resource.MsbSubscriber.Subtype.header%></th>
+                    <th><%=resource.MsbSubscriber.Account.header%></th>
+                    <th><%=resource.MsbSubscriber.Userkey.header%></th>
+                                        
+                    <th>View</th>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <% } %>
+                </tr>
+                <% for(let i in record.msbSubscriber){ let rec = record.msbSubscriber[i] %>
+                <tr>
+                    <td><a><%=rec.subscriber%></a></td>
+                    <!--td><a><%=rec.password%></a></td-->
+                    <td><a><%=rec.name%></a></td>
+                    <td><a><%=rec.email%></a></td>
+                    <td><a><%=rec.creationDate%></a></td>
+                    <td><a><%=rec.modificationDate%></a></td>
+                    <td><a><%=rec.subtype%></a></td>
+                    <td><a><%=rec.account%></a></td>
+                    <td><a><%=rec.userKey%></a></td>
+                    
+                    <td><a href="/readMsbSubscriber?subscriber=<%=rec.subscriber%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <td><a href="/writeMsbSubscriber?subscriber=<%=rec.subscriber%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                    <td><a href="/deleteMsbSubscriber?subscriber=<%=rec.subscriber%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <% } %>
+                </tr>
+                <% } %>
+            </table>        
+	    <button type="submit" class="btn btn-default"><a href="/newMsbSubscriber">Add</a></button>
+	    <button type="submit" class="btn btn-default">Clear</button>
+	    </div>	    
+        </div>            
+        
+    </div>
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

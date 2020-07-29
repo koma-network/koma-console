@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writeMsbPubsubnodeMapper">			
+	
+	<update id="writeMsbPubsubnode">
+		update msb_pubsubnode set serviceID = #{serviceid},
+		nodeID = #{nodeid},
+		leaf = #{leaf},
+		creationDate = #{creationdate},
+		modificationDate = #{modificationdate},
+		parent = #{parent},
+		deliverPayloads = #{deliverpayloads},
+		maxPayloadSize = #{maxpayloadsize},
+		persistItems = #{persistitems},
+		maxItems = #{maxitems},
+		notifyConfigChanges = #{notifyconfigchanges},
+		notifyDelete = #{notifydelete},
+		notifyRetract = #{notifyretract},
+		presenceBased = #{presencebased},
+		sendItemSubscribe = #{senditemsubscribe},
+		publisherModel = #{publishermodel},
+		subscriptionEnabled = #{subscriptionenabled},
+		configSubscription = #{configsubscription},
+		accessModel = #{accessmodel},
+		payloadType = #{payloadtype},
+		bodyXSLT = #{bodyxslt},
+		dataformXSLT = #{dataformxslt},
+		creator = #{creator},
+		description = #{description},
+		language = #{language},
+		name = #{name},
+		replyPolicy = #{replypolicy},
+		associationPolicy = #{associationpolicy},
+		maxLeafNodes = #{maxleafnodes} where serviceID = #{serviceid};
+	</update>
+
+</mapper>

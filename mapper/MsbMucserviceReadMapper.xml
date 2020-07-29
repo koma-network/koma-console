@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="readMsbMucserviceMapper">			
+	
+	<select id="readMsbMucservice">
+		select * from msb_mucservice where serviceID = #{serviceid};
+	</select>
+ 
+	<select id="readMsbMucserviceMsbMucroom">
+        select * from msb_mucroom where serviceID = #{serviceID};
+	</select>
+   
+	<select id="readMsbMucserviceMsbMucserviceprop">
+        select * from msb_mucserviceprop where serviceID = #{serviceID};
+	</select>
+  
+</mapper>

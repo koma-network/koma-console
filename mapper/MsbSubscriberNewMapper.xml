@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="newMsbSubscriberMapper">			
+	
+	<insert id="newMsbSubscriber">
+		insert into msb_subscriber(subscriber,password,name,email,creationDate,modificationDate,subtype,account,userKey) 
+		values (#{subscriber},#{password},#{name},#{email},#{creationdate},#{modificationdate},#{subtype},#{account},#{userkey});
+	</insert>
+
+</mapper>

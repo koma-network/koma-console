@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchMsbRemoteserverMapper">			
+	
+	<select id="countMsbRemoteserverSearch">
+		select count(*) from msb_remoteserver
+		<trim prefix="where" prefixOverrides="and">
+			<if test="xmppdomain!=null">
+				and xmppDomain like #{xmppdomain}
+			</if>
+			<if test="remoteaddress!=null">
+				and remoteAddress like #{remoteaddress}
+			</if>
+			<if test="remoteport!=null">
+				and remotePort like #{remoteport}
+			</if>
+			<if test="user!=null">
+				and user like #{user}
+			</if>
+			<if test="password!=null">
+				and password like #{password}
+			</if>
+			<if test="permission!=null">
+				and permission like #{permission}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchMsbRemoteserver">
+		select xmppDomain,
+                remoteAddress,
+                remotePort,
+                user,
+                password,
+                permission,
+                'x' from msb_remoteserver  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="xmppdomain!=null">
+				xmppDomain like #{xmppdomain}
+			</if>
+			<if test="remoteaddress!=null">
+				remoteAddress like #{remoteaddress}
+			</if>
+			<if test="remoteport!=null">
+				remotePort like #{remoteport}
+			</if>
+			<if test="user!=null">
+				user like #{user}
+			</if>
+			<if test="password!=null">
+				password like #{password}
+			</if>
+			<if test="permission!=null">
+				permission like #{permission}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

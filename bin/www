@@ -1,0 +1,86 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+var https = require('https');
+var fs = require('fs');
+
+/**
+ * Create HTTP/HTTPS server.
+ */
+const options = {
+  key: fs.readFileSync('encryption/server.key'),
+  cert: fs.readFileSync('encryption/server.cert'),
+};
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+ 
+var app = require('../app');
+var port_3000 = normalizePort(process.env.PORT || '3000');
+app.set('port', port_3000);
+
+var server_3000 = https.createServer(options,app);
+server_3000.listen(port_3000);
+server_3000.on('error', onError);
+server_3000.on('listening', function(){
+	console.log('Web Server listening on port ' + port_3000); 
+});
+
+/**
+ * Normalize a port into a number, string, or false.
+ */
+function normalizePort(val) {
+
+  var port = parseInt(val, 10);
+  if (isNaN(port)) {
+    return val;
+  }
+  if (port >= 0) {
+    return port;
+  }
+  return false;
+}
+
+/**
+ * Event listener for HTTP server "error" event.
+ */
+function onError(error) {
+
+  if (error.syscall !== 'listen') {
+    throw error;
+  }  
+  switch (error.code) {
+    case 'EACCES':
+      console.error('Port requires elevated privileges');
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      console.error('Port is already in use');
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+}
+
+/**
+ * Create Socket.io for Messaging Service
+ */
+var io = require("socket.io").listen(server_3000);
+
+var sockets = {};
+
+io.sockets.on('connection', function (socket) {
+
+    socket.channels = {};
+    sockets[socket.id] = socket;
+
+    console.log("["+ socket.id + "] connection accepted");
+
+	socket.on("disconnect", function(){
+		console.info(`client disconnected [id=${socket.id}]`);
+	})	
+});

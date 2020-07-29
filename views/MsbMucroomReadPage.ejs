@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><h4><%=resource.Heading%></h4></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="msbMucaffiliation-tab" data-toggle="tab" href="#msbMucaffiliation" role="tab" aria-controls="msbMucaffiliation" aria-selected="true"><h4><%=resource.MsbMucaffiliation.Heading%></h4></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="msbMucmember-tab" data-toggle="tab" href="#msbMucmember" role="tab" aria-controls="msbMucmember" aria-selected="true"><h4><%=resource.MsbMucmember.Heading%></h4></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="msbMucroomprop-tab" data-toggle="tab" href="#msbMucroomprop" role="tab" aria-controls="msbMucroomprop" aria-selected="true"><h4><%=resource.MsbMucroomprop.Heading%></h4></a>
+      </li>
+    </ul>
+    
+    <div class="tab-content" id="myTabContent">
+
+        <div class="tab-pane fade in active" id="home" role="tabpanel" aria-labelledby="home-tab">	
+            <div style="width:40%">
+            <form class="form-horizontal">
+                <table class="table table-striped">
+                    <tr class="heading-tr">
+                        <th> <%=resource.Heading%></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td><%=resource.Roomid.label%></td>
+                        <td><%=record.roomID%></td>						
+                    </tr><tr>
+                        <td><%=resource.Serviceid.label%></td>
+                        <td><%=record.serviceID%></td>						
+                    </tr><tr>
+                        <td><%=resource.Creationdate.label%></td>
+                        <td><%=record.creationDate%></td>						
+                    </tr><tr>
+                        <td><%=resource.Modificationdate.label%></td>
+                        <td><%=record.modificationDate%></td>						
+                    </tr><tr>
+                        <td><%=resource.Name.label%></td>
+                        <td><%=record.name%></td>						
+                    </tr><tr>
+                        <td><%=resource.Naturalname.label%></td>
+                        <td><%=record.naturalName%></td>						
+                    </tr><tr>
+                        <td><%=resource.Description.label%></td>
+                        <td><%=record.description%></td>						
+                    </tr><tr>
+                        <td><%=resource.Lockeddate.label%></td>
+                        <td><%=record.lockedDate%></td>						
+                    </tr><tr>
+                        <td><%=resource.Emptydate.label%></td>
+                        <td><%=record.emptyDate%></td>						
+                    </tr><tr>
+                        <td><%=resource.Canchangesubject.label%></td>
+                        <td><%=record.canChangeSubject%></td>						
+                    </tr><tr>
+                        <td><%=resource.Maxusers.label%></td>
+                        <td><%=record.maxUsers%></td>						
+                    </tr><tr>
+                        <td><%=resource.Publicroom.label%></td>
+                        <td><%=record.publicRoom%></td>						
+                    </tr><tr>
+                        <td><%=resource.Moderated.label%></td>
+                        <td><%=record.moderated%></td>						
+                    </tr><tr>
+                        <td><%=resource.Membersonly.label%></td>
+                        <td><%=record.membersOnly%></td>						
+                    </tr><tr>
+                        <td><%=resource.Caninvite.label%></td>
+                        <td><%=record.canInvite%></td>						
+                    </tr><tr>
+                        <td><%=resource.Roompassword.label%></td>
+                        <td><%=record.roomPassword%></td>						
+                    </tr><tr>
+                        <td><%=resource.Candiscoverjid.label%></td>
+                        <td><%=record.canDiscoverJID%></td>						
+                    </tr><tr>
+                        <td><%=resource.Logenabled.label%></td>
+                        <td><%=record.logEnabled%></td>						
+                    </tr><tr>
+                        <td><%=resource.Subject.label%></td>
+                        <td><%=record.subject%></td>						
+                    </tr><tr>
+                        <td><%=resource.Rolestobroadcast.label%></td>
+                        <td><%=record.rolesToBroadcast%></td>						
+                    </tr><tr>
+                        <td><%=resource.Usereservednick.label%></td>
+                        <td><%=record.useReservedNick%></td>						
+                    </tr><tr>
+                        <td><%=resource.Canchangenick.label%></td>
+                        <td><%=record.canChangeNick%></td>						
+                    </tr><tr>
+                        <td><%=resource.Canregister.label%></td>
+                        <td><%=record.canRegister%></td>						
+                    </tr>
+                
+                </table>
+                <% if(session.user_acl=='ROLE_ADMIN') { %>
+                <button type="submit" class="btn btn-default"><a href="/writeMsbMucroom?roomid=<%=record.roomID%>">Edit</a></button>
+                <button type="submit" class="btn btn-default"><a href="/deleteMsbMucroom?roomid=<%=record.roomID%>">Delete</a></button>
+                <% } %>
+                <button type="button" class="btn btn-default" onclick="javascript:window.history.back()">Back</button>
+            </form>
+            </div>
+        </div>
+        
+	<div class="tab-pane fade" id="msbMucaffiliation" role="tabpanel" aria-labelledby="msbMucaffiliation-tab">
+            <div style="width:75%">
+            <table class="table table-striped">
+                <tr class="heading-tr">
+                    <th><%=resource.MsbMucaffiliation.Roomid.header%></th>
+                    <th><%=resource.MsbMucaffiliation.Jid.header%></th>
+                    <th><%=resource.MsbMucaffiliation.Affiliation.header%></th>
+                                        
+                    <th>View</th>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <% } %>
+                </tr>
+                <% for(let i in record.msbMucaffiliation){ let rec = record.msbMucaffiliation[i] %>
+                <tr>
+                    <td><a><%=rec.roomID%></a></td>
+                    <td><a><%=rec.jid%></a></td>
+                    <td><a><%=rec.affiliation%></a></td>
+                    
+                    <td><a href="/readMsbMucaffiliation?roomid=<%=rec.roomID%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <td><a href="/writeMsbMucaffiliation?roomid=<%=rec.roomID%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                    <td><a href="/deleteMsbMucaffiliation?roomid=<%=rec.roomID%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <% } %>
+                </tr>
+                <% } %>
+            </table>        
+	    <button type="submit" class="btn btn-default"><a href="/newMsbMucaffiliation">Add</a></button>
+	    <button type="submit" class="btn btn-default">Clear</button>
+	    </div>	    
+        </div>            
+        
+	<div class="tab-pane fade" id="msbMucmember" role="tabpanel" aria-labelledby="msbMucmember-tab">
+            <div style="width:75%">
+            <table class="table table-striped">
+                <tr class="heading-tr">
+                    <th><%=resource.MsbMucmember.Roomid.header%></th>
+                    <th><%=resource.MsbMucmember.Jid.header%></th>
+                    <th><%=resource.MsbMucmember.Subscriber.header%></th>
+                    <th><%=resource.MsbMucmember.Nickname.header%></th>
+                    <th><%=resource.MsbMucmember.Firstname.header%></th>
+                    <th><%=resource.MsbMucmember.Lastname.header%></th>
+                    <th><%=resource.MsbMucmember.Url.header%></th>
+                    <th><%=resource.MsbMucmember.Email.header%></th>
+                    <th><%=resource.MsbMucmember.Faqentry.header%></th>
+                                        
+                    <th>View</th>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <% } %>
+                </tr>
+                <% for(let i in record.msbMucmember){ let rec = record.msbMucmember[i] %>
+                <tr>
+                    <td><a><%=rec.roomID%></a></td>
+                    <td><a><%=rec.jid%></a></td>
+                    <td><a><%=rec.subscriber%></a></td>
+                    <td><a><%=rec.nickname%></a></td>
+                    <td><a><%=rec.firstName%></a></td>
+                    <td><a><%=rec.lastName%></a></td>
+                    <td><a><%=rec.url%></a></td>
+                    <td><a><%=rec.email%></a></td>
+                    <td><a><%=rec.faqentry%></a></td>
+                    
+                    <td><a href="/readMsbMucmember?roomid=<%=rec.roomID%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <td><a href="/writeMsbMucmember?roomid=<%=rec.roomID%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                    <td><a href="/deleteMsbMucmember?roomid=<%=rec.roomID%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <% } %>
+                </tr>
+                <% } %>
+            </table>        
+	    <button type="submit" class="btn btn-default"><a href="/newMsbMucmember">Add</a></button>
+	    <button type="submit" class="btn btn-default">Clear</button>
+	    </div>	    
+        </div>            
+        
+	<div class="tab-pane fade" id="msbMucroomprop" role="tabpanel" aria-labelledby="msbMucroomprop-tab">
+            <div style="width:75%">
+            <table class="table table-striped">
+                <tr class="heading-tr">
+                    <th><%=resource.MsbMucroomprop.Roomid.header%></th>
+                    <th><%=resource.MsbMucroomprop.Name.header%></th>
+                    <th><%=resource.MsbMucroomprop.Propvalue.header%></th>
+                                        
+                    <th>View</th>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <% } %>
+                </tr>
+                <% for(let i in record.msbMucroomprop){ let rec = record.msbMucroomprop[i] %>
+                <tr>
+                    <td><a><%=rec.roomID%></a></td>
+                    <td><a><%=rec.name%></a></td>
+                    <td><a><%=rec.propValue%></a></td>
+                    
+                    <td><a href="/readMsbMucroomprop?roomid=<%=rec.roomID%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <td><a href="/writeMsbMucroomprop?roomid=<%=rec.roomID%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                    <td><a href="/deleteMsbMucroomprop?roomid=<%=rec.roomID%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <% } %>
+                </tr>
+                <% } %>
+            </table>        
+	    <button type="submit" class="btn btn-default"><a href="/newMsbMucroomprop">Add</a></button>
+	    <button type="submit" class="btn btn-default">Clear</button>
+	    </div>	    
+        </div>            
+        
+    </div>
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

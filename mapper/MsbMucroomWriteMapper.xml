@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writeMsbMucroomMapper">			
+	
+	<update id="writeMsbMucroom">
+		update msb_mucroom set roomID = #{roomid},
+		serviceID = #{serviceid},
+		creationDate = #{creationdate},
+		modificationDate = #{modificationdate},
+		name = #{name},
+		naturalName = #{naturalname},
+		description = #{description},
+		lockedDate = #{lockeddate},
+		emptyDate = #{emptydate},
+		canChangeSubject = #{canchangesubject},
+		maxUsers = #{maxusers},
+		publicRoom = #{publicroom},
+		moderated = #{moderated},
+		membersOnly = #{membersonly},
+		canInvite = #{caninvite},
+		roomPassword = #{roompassword},
+		canDiscoverJID = #{candiscoverjid},
+		logEnabled = #{logenabled},
+		subject = #{subject},
+		rolesToBroadcast = #{rolestobroadcast},
+		useReservedNick = #{usereservednick},
+		canChangeNick = #{canchangenick},
+		canRegister = #{canregister} where roomID = #{roomid};
+	</update>
+
+</mapper>

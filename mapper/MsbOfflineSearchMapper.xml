@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchMsbOfflineMapper">			
+	
+	<select id="countMsbOfflineSearch">
+		select count(*) from msb_offline
+		<trim prefix="where" prefixOverrides="and">
+			<if test="subscriber!=null">
+				and subscriber like #{subscriber}
+			</if>
+			<if test="messageid!=null">
+				and messageID like #{messageid}
+			</if>
+			<if test="creationdate!=null">
+				and creationDate like #{creationdate}
+			</if>
+			<if test="messagesize!=null">
+				and messageSize like #{messagesize}
+			</if>
+			<if test="stanza!=null">
+				and stanza like #{stanza}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchMsbOffline">
+		select subscriber,
+                messageID,
+                creationDate,
+                messageSize,
+                stanza,
+                'x' from msb_offline  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="subscriber!=null">
+				subscriber like #{subscriber}
+			</if>
+			<if test="messageid!=null">
+				messageID like #{messageid}
+			</if>
+			<if test="creationdate!=null">
+				creationDate like #{creationdate}
+			</if>
+			<if test="messagesize!=null">
+				messageSize like #{messagesize}
+			</if>
+			<if test="stanza!=null">
+				stanza like #{stanza}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="newMsbPubsubitemMapper">			
+	
+	<insert id="newMsbPubsubitem">
+		insert into msb_pubsubitem(serviceID,nodeID,id,jid,creationDate,payload) 
+		values (#{serviceid},#{nodeid},#{id},#{jid},#{creationdate},#{payload});
+	</insert>
+
+</mapper>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchMsbSubscriberpropMapper">			
+	
+	<select id="countMsbSubscriberpropSearch">
+		select count(*) from msb_subscriberprop
+		<trim prefix="where" prefixOverrides="and">
+			<if test="subscriber!=null">
+				and subscriber like #{subscriber}
+			</if>
+			<if test="name!=null">
+				and name like #{name}
+			</if>
+			<if test="propvalue!=null">
+				and propValue like #{propvalue}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchMsbSubscriberprop">
+		select subscriber,
+                name,
+                propValue,
+                'x' from msb_subscriberprop  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="subscriber!=null">
+				subscriber like #{subscriber}
+			</if>
+			<if test="name!=null">
+				name like #{name}
+			</if>
+			<if test="propvalue!=null">
+				propValue like #{propvalue}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

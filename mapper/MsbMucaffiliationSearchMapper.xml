@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchMsbMucaffiliationMapper">			
+	
+	<select id="countMsbMucaffiliationSearch">
+		select count(*) from msb_mucaffiliation
+		<trim prefix="where" prefixOverrides="and">
+			<if test="roomid!=null">
+				and roomID like #{roomid}
+			</if>
+			<if test="jid!=null">
+				and jid like #{jid}
+			</if>
+			<if test="affiliation!=null">
+				and affiliation like #{affiliation}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchMsbMucaffiliation">
+		select roomID,
+                jid,
+                affiliation,
+                'x' from msb_mucaffiliation  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="roomid!=null">
+				roomID like #{roomid}
+			</if>
+			<if test="jid!=null">
+				jid like #{jid}
+			</if>
+			<if test="affiliation!=null">
+				affiliation like #{affiliation}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>
