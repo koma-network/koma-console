@@ -2,7 +2,7 @@
 KOMA Console - Authentication & Administration Console <br />
 <table>
 <tr>
-<td style="border:0px">
+<td style="border:2px;color:#fff">
 <img src="https://user-images.githubusercontent.com/15040338/88755779-17043600-d18c-11ea-9398-a93f2df2328c.jpg">
 </td>
 <td style="border:0px">
