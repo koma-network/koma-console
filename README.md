@@ -28,7 +28,7 @@
 </tr>
 </table>
 </div>
-<div class="Subhead" Subhead--spacious">
+<div class="Subhead Subhead--spacious">
   <div class="Subhead-heading"><h3>Base Functions</h3></div>
   <div class="Subhead-description">1. Account Maintenance</div>
   <div class="Subhead-description">2. Subscriber Maintenance</div>
@@ -36,7 +36,7 @@
   <div class="Subhead-description">4. Session and Subscriber Information</div>
 </div>
 <br>
-<div class="Subhead" Subhead--spacious">
+<div class="Subhead Subhead--spacious">
   <div class="Subhead-heading"><h3>Requirement</h3></div>
   <div class="Subhead-description">1. Install MySQL Server and load file import.sql (for DB Simulation)</div>
   <div class="Subhead-description">2. Change configuration in file koma-console/routes/dao.js for MySQL DB access</div>
@@ -44,13 +44,13 @@
   <div class="Subhead-description">4. Change Security Certificate in directory koma-console/encryption (Optional)</div>
 </div>
 <br>
-<div class="Subhead" Subhead--spacious">
+<div class="Subhead Subhead--spacious">
   <div class="Subhead-heading"><h3>Run</h3></div>
   <div class="Subhead-description">$npm install</div>
   <div class="Subhead-description">$npm start</div>
 </div>
 <br>
-<div class="Subhead" Subhead--spacious">
+<div class="Subhead Subhead--spacious">
   <div class="Subhead-heading"><h3>Test</h3></div>
   <div class="Subhead-description">open browser to https://[ip_address]:3000</div>
   <div class="Subhead-description"><br></div>
