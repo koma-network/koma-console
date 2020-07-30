@@ -50,7 +50,7 @@
 <div class="Subhead Subhead--spacious">
   <div class="Subhead-heading"><h3>Test</h3></div>
   <div class="Subhead-description">open browser to https://[ip_address]:3000</div>
-  <div class="Subhead-description"><br></div>
+  <div class="Subhead-description"><p/></div>
   <div class="Subhead-description">Username : admin</div>
   <div class="Subhead-description">Password : password</div>
 </div>
