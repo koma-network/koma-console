@@ -1,5 +1,8 @@
-# koma-console
-KOMA Console - Authentication & Administration Console <br />
+<div class="pagehead">
+  <h2>KOMA Console</h2>
+  <p>KOMA Console - Authentication & Administration Console</p>
+</div>
+<div class="box-shadow-medium p-3">
 <table>
 <tr>
 <td>
@@ -24,26 +27,30 @@ KOMA Console - Authentication & Administration Console <br />
 </td>
 </tr>
 </table>
-Base Functions : <br />
-1. Account Maintenance <br />
-2. Subscriber Maintenance <br />
-3. MuC & Room Maintenance <br />
-4. Session and Subscriber Information <br />
-<br />
-Requirement : <br />
-<br />
-1. Install MySQL Server and load file import.sql (for DB Simulation) <br />
-3. Change configuration in file koma-console/routes/dao.js for MySQL DB access <br />
-4. Change configuration in file koma-console/routes/dao.js for MQTT Broker address <br />
-5. Change Security Certificate in directory koma-console/encryption (Optional) <br />
-<br />
-Run: <br />
-<br />
-  $npm install <br />
-  $npm start <br />
-<br />
-Try WebApps : https://[ip_address]:3000 <br />
-<br />
-Username : admin <br />
-Password : password <br />
-<br />
+</div>
+<div class="Subhead">
+  <div class="Subhead-heading"><h3>Base Functions</h3></div>
+  <div class="Subhead-description">1. Account Maintenance</div>
+  <div class="Subhead-description">2. Subscriber Maintenance</div>
+  <div class="Subhead-description">3. MuC & Room Maintenance</div>
+  <div class="Subhead-description">4. Session and Subscriber Information</div>
+</div>
+<div class="Subhead">
+  <div class="Subhead-heading"><h3>Requirement</h3></div>
+  <div class="Subhead-description">1. Install MySQL Server and load file import.sql (for DB Simulation)</div>
+  <div class="Subhead-description">2. Change configuration in file koma-console/routes/dao.js for MySQL DB access</div>
+  <div class="Subhead-description">3. Change configuration in file koma-console/routes/dao.js for Broker address (Optional)</div>
+  <div class="Subhead-description">4. Change Security Certificate in directory koma-console/encryption (Optional)</div>
+</div>
+<div class="Subhead">
+  <div class="Subhead-heading"><h3>Run</h3></div>
+  <div class="Subhead-description">$npm install</div>
+  <div class="Subhead-description">$npm start</div>
+</div>
+<div class="Subhead">
+  <div class="Subhead-heading"><h3>Test</h3></div>
+  <div class="Subhead-description">open browser to https://[ip_address]:3000</div>
+  <div class="Subhead-description"><br></div>
+  <div class="Subhead-description">Username : admin</div>
+  <div class="Subhead-description">Password : password</div>
+</div>
